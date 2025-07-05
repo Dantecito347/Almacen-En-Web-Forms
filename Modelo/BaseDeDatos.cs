@@ -9,7 +9,7 @@ namespace Parcial_Nº2___Almacen.Modelo
 {
     public class BaseDeDatos
     {
-        private string connectionString = "Server=localhost\\SQLEXPRESS;Database=Almacen;Trusted_Connection=True;";
+        public string connectionString;
 
         public DataTable Select(string query, Dictionary<string, object> parameters = null)
         {
@@ -43,6 +43,17 @@ namespace Parcial_Nº2___Almacen.Modelo
                     connection.Open();
                     return command.ExecuteNonQuery();
                 }
+            }
+        }
+
+        public object ExecuteScalarProcedure(string procedureName)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlCommand cmd = new SqlCommand(procedureName, conn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                conn.Open();
+                return cmd.ExecuteScalar();
             }
         }
     }
