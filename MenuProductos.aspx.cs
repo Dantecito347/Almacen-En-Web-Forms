@@ -72,14 +72,30 @@ namespace Parcial_Nº2___Almacen
         {
             if (e.CommandName == "Comprar")
             {
-                string idProducto = e.CommandArgument.ToString();
-
                 int index = Convert.ToInt32(e.CommandArgument);
                 GridViewRow row = gvProductos.Rows[index];
-                TextBox txtCantidad = (TextBox)row.FindControl("txtCantidad");
-                string cantidad = txtCantidad.Text;
 
-                lblMensaje.Text = $"Producto {idProducto} comprado. Cantidad: {cantidad}";
+  
+                int productoId = Convert.ToInt32(row.Cells[0].Text);
+                string nombre = row.Cells[1].Text;
+                decimal precio = Convert.ToDecimal(row.Cells[2].Text);
+                TextBox txtCantidad = (TextBox)row.FindControl("txtCantidad");
+                int cantidad = Convert.ToInt32(txtCantidad.Text);
+
+                string connectionString = ConfigurationManager.ConnectionStrings["AlmacenConnectionString"].ConnectionString;
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                using (SqlCommand cmd = new SqlCommand("AgregarProductoAlCarrito", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ProductoID", productoId);
+                    cmd.Parameters.AddWithValue("@NombreProducto", nombre);
+                    cmd.Parameters.AddWithValue("@Precio", precio);
+                    cmd.Parameters.AddWithValue("@Cantidad", cantidad);
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+
+                lblMensaje.Text = $"Producto {nombre} agregado al carrito. Cantidad: {cantidad}";
             }
         }
 
@@ -89,11 +105,27 @@ namespace Parcial_Nº2___Almacen
             {
                 int index = Convert.ToInt32(e.CommandArgument);
                 GridViewRow row = gvBebidas.Rows[index];
-                string idBebida = row.Cells[0].Text;
-                TextBox txtCantidad = (TextBox)row.FindControl("txtCantidadBebida");
-                string cantidad = txtCantidad.Text;
 
-                lblMensaje.Text = $"Bebida {idBebida} comprada. Cantidad: {cantidad}";
+                int productoId = Convert.ToInt32(row.Cells[0].Text);
+                string nombre = row.Cells[1].Text;
+                decimal precio = Convert.ToDecimal(row.Cells[2].Text);
+                TextBox txtCantidad = (TextBox)row.FindControl("txtCantidadBebida");
+                int cantidad = Convert.ToInt32(txtCantidad.Text);
+
+                string connectionString = ConfigurationManager.ConnectionStrings["AlmacenConnectionString"].ConnectionString;
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                using (SqlCommand cmd = new SqlCommand("AgregarProductoAlCarrito", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ProductoID", productoId);
+                    cmd.Parameters.AddWithValue("@NombreProducto", nombre);
+                    cmd.Parameters.AddWithValue("@Precio", precio);
+                    cmd.Parameters.AddWithValue("@Cantidad", cantidad);
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+
+                lblMensaje.Text = $"Bebida {nombre} agregada al carrito. Cantidad: {cantidad}";
             }
         }
 
@@ -103,11 +135,27 @@ namespace Parcial_Nº2___Almacen
             {
                 int index = Convert.ToInt32(e.CommandArgument);
                 GridViewRow row = gvLacteos.Rows[index];
-                string idLacteo = row.Cells[0].Text;
-                TextBox txtCantidad = (TextBox)row.FindControl("txtCantidadLacteo");
-                string cantidad = txtCantidad.Text;
 
-                lblMensaje.Text = $"Lácteo {idLacteo} comprado. Cantidad: {cantidad}";
+                int productoId = Convert.ToInt32(row.Cells[0].Text);
+                string nombre = row.Cells[1].Text;
+                decimal precio = Convert.ToDecimal(row.Cells[2].Text);
+                TextBox txtCantidad = (TextBox)row.FindControl("txtCantidadLacteo");
+                int cantidad = Convert.ToInt32(txtCantidad.Text);
+
+                string connectionString = ConfigurationManager.ConnectionStrings["AlmacenConnectionString"].ConnectionString;
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                using (SqlCommand cmd = new SqlCommand("AgregarProductoAlCarrito", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ProductoID", productoId);
+                    cmd.Parameters.AddWithValue("@NombreProducto", nombre);
+                    cmd.Parameters.AddWithValue("@Precio", precio);
+                    cmd.Parameters.AddWithValue("@Cantidad", cantidad);
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+
+                lblMensaje.Text = $"Lácteo {nombre} agregado al carrito. Cantidad: {cantidad}";
             }
         }
 

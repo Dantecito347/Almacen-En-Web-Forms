@@ -10,7 +10,7 @@ namespace Parcial_Nº2___Almacen.Modelo
 {
     public class BaseDeDatos
     {
-        private string connectionString;
+        public string connectionString;
 
         public BaseDeDatos()
         {
