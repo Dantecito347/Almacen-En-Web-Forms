@@ -4,12 +4,18 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Configuration;
 
 namespace Parcial_Nº2___Almacen.Modelo
 {
     public class BaseDeDatos
     {
         public string connectionString;
+
+        public BaseDeDatos()
+        {
+            connectionString = ConfigurationManager.ConnectionStrings["AlmacenConnectionString"].ConnectionString;
+        }
 
         public DataTable Select(string query, Dictionary<string, object> parameters = null)
         {
