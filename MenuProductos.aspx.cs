@@ -58,7 +58,7 @@ namespace Parcial_Nº2___Almacen
 
             using (SqlConnection conexion = new SqlConnection(cadenaConexion))
             {
-                string consulta = "SELECT ProductosID AS IdProducto, Nombre, Precio, Stock FROM Productos_Alimentos";
+                string consulta = "SELECT ID AS ID, Nombre, Precio, Stock FROM Productos_Alimentos";
                 using (SqlDataAdapter adaptador = new SqlDataAdapter(consulta, conexion))
                 {
                     adaptador.Fill(tabla);
@@ -73,14 +73,21 @@ namespace Parcial_Nº2___Almacen
             if (e.CommandName == "Comprar")
             {
                 int index = Convert.ToInt32(e.CommandArgument);
-                GridViewRow row = gvProductos.Rows[index];
 
-  
-                int productoId = Convert.ToInt32(row.Cells[0].Text);
+                int productoId = Convert.ToInt32(gvProductos.DataKeys[index].Values["ID"]);
+                decimal precio = Convert.ToDecimal(gvProductos.DataKeys[index].Values["Precio"]);
+
+                GridViewRow row = gvProductos.Rows[index];
                 string nombre = row.Cells[1].Text;
-                decimal precio = Convert.ToDecimal(row.Cells[2].Text);
+
                 TextBox txtCantidad = (TextBox)row.FindControl("txtCantidad");
-                int cantidad = Convert.ToInt32(txtCantidad.Text);
+                int cantidad;
+                if (!int.TryParse(txtCantidad.Text, out cantidad) || cantidad <= 0)
+                {
+                    lblMensaje.Text = "Error: Por favor, ingrese una cantidad numérica válida y mayor a cero.";
+                    return; 
+                }
+
 
                 string connectionString = ConfigurationManager.ConnectionStrings["AlmacenConnectionString"].ConnectionString;
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -104,13 +111,20 @@ namespace Parcial_Nº2___Almacen
             if (e.CommandName == "ComprarBebida")
             {
                 int index = Convert.ToInt32(e.CommandArgument);
-                GridViewRow row = gvBebidas.Rows[index];
 
-                int productoId = Convert.ToInt32(row.Cells[0].Text);
+                int productoId = Convert.ToInt32(gvBebidas.DataKeys[index].Values["ID"]);
+                decimal precio = Convert.ToDecimal(gvBebidas.DataKeys[index].Values["Precio"]);
+
+                GridViewRow row = gvBebidas.Rows[index];
                 string nombre = row.Cells[1].Text;
-                decimal precio = Convert.ToDecimal(row.Cells[2].Text);
+
                 TextBox txtCantidad = (TextBox)row.FindControl("txtCantidadBebida");
-                int cantidad = Convert.ToInt32(txtCantidad.Text);
+                int cantidad;
+                if (!int.TryParse(txtCantidad.Text, out cantidad) || cantidad <= 0)
+                {
+                    lblMensaje.Text = "Error: Por favor, ingrese una cantidad numérica válida y mayor a cero.";
+                    return;
+                }
 
                 string connectionString = ConfigurationManager.ConnectionStrings["AlmacenConnectionString"].ConnectionString;
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -134,13 +148,20 @@ namespace Parcial_Nº2___Almacen
             if (e.CommandName == "ComprarLacteo")
             {
                 int index = Convert.ToInt32(e.CommandArgument);
-                GridViewRow row = gvLacteos.Rows[index];
 
-                int productoId = Convert.ToInt32(row.Cells[0].Text);
+                int productoId = Convert.ToInt32(gvLacteos.DataKeys[index].Values["ID"]);
+                decimal precio = Convert.ToDecimal(gvLacteos.DataKeys[index].Values["Precio"]);
+
+                GridViewRow row = gvLacteos.Rows[index];
                 string nombre = row.Cells[1].Text;
-                decimal precio = Convert.ToDecimal(row.Cells[2].Text);
+
                 TextBox txtCantidad = (TextBox)row.FindControl("txtCantidadLacteo");
-                int cantidad = Convert.ToInt32(txtCantidad.Text);
+                int cantidad;
+                if (!int.TryParse(txtCantidad.Text, out cantidad) || cantidad <= 0)
+                {
+                    lblMensaje.Text = "Error: Por favor, ingrese una cantidad numérica válida y mayor a cero.";
+                    return;
+                }
 
                 string connectionString = ConfigurationManager.ConnectionStrings["AlmacenConnectionString"].ConnectionString;
                 using (SqlConnection conn = new SqlConnection(connectionString))

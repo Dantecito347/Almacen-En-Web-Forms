@@ -1,9 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MPIndex.Master" AutoEventWireup="true" CodeBehind="MenuCarrito.aspx.cs" Inherits="Parcial_Nº2___Almacen.WebForm1" %>
+ <%@ Register Src="/BarraDeNavegacion.ascx" TagName="BarraDeNavegacion" TagPrefix="uc" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
-</asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <uc:BarraDeNavegacion ID="NavBar1" runat="server" />
 <div>
     <h1>Carrito de Compras</h1>
     <asp:GridView ID="gvCarrito" runat="server" AutoGenerateColumns="False">
@@ -15,5 +15,5 @@
         </Columns>
     </asp:GridView>
     <h3>Total: <asp:Label ID="lblTotal" runat="server" Text="0"></asp:Label></h3>
-</div>
+   </div>
 </asp:Content>

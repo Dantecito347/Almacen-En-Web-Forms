@@ -67,6 +67,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BarraDeNavegacion.ascx" />
+    <Content Include="MenuCarrito.aspx" />
     <Content Include="MenuEnvios.aspx" />
     <Content Include="MenuPrincipal.aspx" />
     <Content Include="MenuProductos.aspx" />
@@ -74,8 +76,24 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BarraDeNavegacion.ascx.cs">
+      <DependentUpon>BarraDeNavegacion.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BarraDeNavegacion.ascx.designer.cs">
+      <DependentUpon>BarraDeNavegacion.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Carrito.cs" />
+    <Compile Include="Controlador\CarritoControlador.cs" />
     <Compile Include="Controlador\MenuAlimentosControlador.cs" />
     <Compile Include="Controlador\MenuEnviosControlador.cs" />
+    <Compile Include="MenuCarrito.aspx.cs">
+      <DependentUpon>MenuCarrito.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MenuCarrito.aspx.designer.cs">
+      <DependentUpon>MenuCarrito.aspx</DependentUpon>
+    </Compile>
     <Compile Include="MenuEnvios.aspx.cs">
       <DependentUpon>MenuEnvios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

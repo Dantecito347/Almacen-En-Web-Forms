@@ -1,10 +1,14 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MPIndex.Master" AutoEventWireup="true" CodeBehind="MenuPrincipal.aspx.cs" Inherits="Parcial_Nº2___Almacen.MenuPrincipal" %>
+    <%@ Register Src="/BarraDeNavegacion.ascx" TagName="BarraDeNavegacion" TagPrefix="uc" %>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
 
+    <uc:BarraDeNavegacion ID="NavBar1" runat="server" />
         <div class="carousel-container">
   <!-- Overlay con título -->
   <div class="hero-overlay">
+      
+
     <h1 class="title is-2 has-text-white">¡Bienvenido a Lo de Juan!</h1>
     <p class="subtitle is-4 has-text-white">Productos frescos, ofertas increíbles y más 🍞🧀🥩</p>
   </div>

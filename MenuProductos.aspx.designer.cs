@@ -15,13 +15,13 @@ namespace Parcial_Nº2___Almacen
     {
 
         /// <summary>
-        /// Control btnVolver.
+        /// Control NavBar1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnVolver;
+        protected global::Parcial_Nº2___Almacen.BarraDeNavegacion NavBar1;
 
         /// <summary>
         /// Control gvProductos.

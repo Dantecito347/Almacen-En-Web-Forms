@@ -15,6 +15,15 @@ namespace Parcial_Nº2___Almacen
     {
 
         /// <summary>
+        /// Control NavBar1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Parcial_Nº2___Almacen.BarraDeNavegacion NavBar1;
+
+        /// <summary>
         /// Control gvRepartidores.
         /// </summary>
         /// <remarks>

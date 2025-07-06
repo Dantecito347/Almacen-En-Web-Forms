@@ -14,7 +14,7 @@ namespace Parcial_Nº2___Almacen.Controlador
 
         public DataTable ObtenerAlimentos()
         {
-            string query = "SELECT ProductosID, Nombre, Precio, Stock FROM Productos_Alimentos";
+            string query = "SELECT ID, Nombre, Precio, Stock FROM Productos_Alimentos";
             return database.Select(query);
 
         }

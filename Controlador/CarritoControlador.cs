@@ -18,10 +18,10 @@ namespace Parcial_Nº2___Almacen.Controlador
             return database.Select(query);
         }
 
-        public decimal ObtenerTotalCarrito()
+        public decimal ObtenerCarritoConTotal()
         {
             using (SqlConnection conn = new SqlConnection(database.connectionString))
-            using (SqlCommand cmd = new SqlCommand("ObtenerTotalCarrito", conn))
+            using (SqlCommand cmd = new SqlCommand("ObtenerCarritoConTotal", conn))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 conn.Open();
