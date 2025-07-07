@@ -9,6 +9,7 @@ namespace Parcial_Nº2___Almacen
 {
     public partial class MenuPrincipal : System.Web.UI.Page
     {
+        // hooola
         protected void Page_Load(object sender, EventArgs e)
         {
 
