@@ -45,22 +45,29 @@ namespace Parcial_Nº2___Almacen
             }
         }
 
-        // Agrega este botón a tu .aspx
         protected void btnFinalizarCompra_Click(object sender, EventArgs e)
         {
-            try
-            {
-                carritoController.FinalizarCompra();
-                // Puedes redirigir a una página de éxito
-                Response.Redirect("CompraExitosa.aspx");
-            }
-            catch (Exception ex)
-            {
-                // Muestra un mensaje de error si algo falla (ej: no hay stock)
-                // lblError.Text = "Error al procesar la compra: " + ex.Message;
-            }
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#modalFinalizar').modal('show');", true);
         }
 
+        protected void btnVaciarCarrito_Click(object sender, EventArgs e)
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#modalVaciar').modal('show');", true);
+        }
+
+        protected void btnConfirmarFinalizar_Click(object sender, EventArgs e)
+        {
+            // Esta es la acción REAL de finalizar la compra
+            carritoController.FinalizarCompra();
+            Response.Redirect("CompraExitosa.aspx");
+        }
+
+        protected void btnConfirmarVaciar_Click(object sender, EventArgs e)
+        {
+            // Esta es la acción REAL de vaciar el carrito
+            carritoController.VaciarCarrito();
+            CargarCarrito(); // Recargamos el carrito (ahora vacío)
+        }
         protected void btnDescargarRecibo_Click(object sender, EventArgs e)
         {
             // Lógica refactorizada para usar el controlador
@@ -86,5 +93,8 @@ namespace Parcial_Nº2___Almacen
             Response.Write(recibo);
             Response.End();
         }
+
+ 
+
     }
 }

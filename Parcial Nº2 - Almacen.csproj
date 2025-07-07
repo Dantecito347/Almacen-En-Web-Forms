@@ -70,6 +70,7 @@
     <Content Include="BarraDeNavegacion.ascx" />
     <Content Include="MenuCarrito.aspx" />
     <Content Include="MenuEnvios.aspx" />
+    <Content Include="MenuGestionarRepartidor.aspx" />
     <Content Include="MenuPrincipal.aspx" />
     <Content Include="MenuProductos.aspx" />
     <Content Include="styles\styles.css" />
@@ -82,6 +83,14 @@
     </Compile>
     <Compile Include="BarraDeNavegacion.ascx.designer.cs">
       <DependentUpon>BarraDeNavegacion.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controlador\MenuGestionarRepartidorControlador.cs" />
+    <Compile Include="MenuGestionarRepartidor.aspx.cs">
+      <DependentUpon>MenuGestionarRepartidor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MenuGestionarRepartidor.aspx.designer.cs">
+      <DependentUpon>MenuGestionarRepartidor.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modelo\Carrito.cs" />
     <Compile Include="Controlador\CarritoControlador.cs" />

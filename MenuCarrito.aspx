@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <uc:BarraDeNavegacion ID="NavBar1" runat="server" />
-<div>
+<div class="ui container" style="margin-top: 20px;">
     <h1>Carrito de Compras</h1>
     <asp:GridView ID="gvCarrito" runat="server" AutoGenerateColumns="False"
     CssClass="ui celled striped table"
@@ -26,14 +26,87 @@
         </asp:TemplateField>
         </Columns>
     </asp:GridView>
-    <h3 class="ui header">Total: 
-    <asp:Label ID="lblTotal" runat="server" CssClass="ui teal label" />
+    <div class="ui clearing segment">
+    <h3 class="ui right floated header">Total: 
+    <asp:Label ID="lblTotal" runat="server" CssClass="ui teal circular label massive" />
 </h3>
-
+    </div>
+        <div class="ui buttons">
 <asp:Button ID="btnDescargarRecibo" runat="server" 
     Text="Descargar Recibo" 
     CssClass="ui primary button"
     OnClick="btnDescargarRecibo_Click" />
 
+<asp:Button ID="btnVaciarCarrito" runat="server" 
+    Text="Vaciar carrito" 
+    CssClass="ui grey button"
+    OnClick="btnVaciarCarrito_Click" />
+
+<asp:Button ID="btnFinalizarCompra" runat="server" 
+    Text="Finalizar Compra" 
+    CssClass="ui primary positive button" 
+    OnClick="btnFinalizarCompra_Click" />
+</div>
+    <div style="display: none;">
+            <asp:Button ID="btnConfirmarFinalizar" runat="server" OnClick="btnConfirmarFinalizar_Click" />
+            <asp:Button ID="btnConfirmarVaciar" runat="server" OnClick="btnConfirmarVaciar_Click" />
+        </div>
+
    </div>
+
+    <div class="ui mini modal" id="modalFinalizar">
+        <div class="header">
+            Confirmar Compra
+        </div>
+        <div class="content">
+            <p>¿Estás seguro de que deseas finalizar tu compra?</p>
+        </div>
+        <div class="actions">
+            <div class="ui negative button" id="btnNoFinalizar">No</div>
+            <div class="ui positive right labeled icon button" id="btnSiFinalizar">
+                Sí, finalizar
+                <i class="checkmark icon"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL PARA VACIAR CARRITO -->
+    <div class="ui mini modal" id="modalVaciar">
+        <div class="header">
+            Vaciar Carrito
+        </div>
+        <div class="content">
+            <p>¿Estás seguro de que deseas vaciar el carrito? Se repondrá el stock de los productos.</p>
+        </div>
+        <div class="actions">
+            <div class="ui button" id="btnNoVaciar">No</div>
+            <div class="ui red right labeled icon button" id="btnSiVaciar">
+                Sí, vaciar
+                <i class="trash icon"></i>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            // --- Lógica para el modal de Finalizar Compra ---
+            // El botón "Sí" del modal hace clic en el botón oculto de ASP.NET
+            $('#btnSiFinalizar').on('click', function () {
+                $('#<%= btnConfirmarFinalizar.ClientID %>').click();
+            });
+            // El botón "No" simplemente cierra el modal
+            $('#btnNoFinalizar').on('click', function () {
+                $('#modalFinalizar').modal('hide');
+            });
+
+            // --- Lógica para el modal de Vaciar Carrito ---
+            // El botón "Sí" del modal hace clic en el botón oculto de ASP.NET
+            $('#btnSiVaciar').on('click', function () {
+                $('#<%= btnConfirmarVaciar.ClientID %>').click();
+            });
+            // El botón "No" simplemente cierra el modal
+            $('#btnNoVaciar').on('click', function () {
+                $('#modalVaciar').modal('hide');
+            });
+        });
+    </script>
 </asp:Content>
