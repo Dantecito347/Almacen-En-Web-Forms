@@ -24,8 +24,17 @@
     </ul>
 
     <form class="d-flex" role="search">
-      <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+<input id="search" class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
       <button class="btn btn-success" type="submit">Buscar</button>
     </form>
   </div>
 </nav>
+<script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    const inputBuscar = document.querySelector("#search");
+    inputBuscar.addEventListener("keyup", () => {
+      const palabra = inputBuscar.value;
+      cargarPersonajes(bd.registroPorNombre(palabra.toLowerCase()));
+    });
+  });
+</script>

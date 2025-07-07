@@ -6,7 +6,10 @@
     <uc:BarraDeNavegacion ID="NavBar1" runat="server" />
 <div>
     <h1>Carrito de Compras</h1>
-    <asp:GridView ID="gvCarrito" runat="server" AutoGenerateColumns="False">
+    <asp:GridView ID="gvCarrito" runat="server" AutoGenerateColumns="False"
+    CssClass="ui celled striped table"
+    DataKeyNames="ID" OnRowCommand="gvCarrito_RowCommand">
+
         <Columns>
             <asp:BoundField DataField="NombreProducto" HeaderText="Producto" />
             <asp:BoundField DataField="Precio" HeaderText="Precio" DataFormatString="{0:C}" />
@@ -16,15 +19,21 @@
             <asp:TemplateField HeaderText="Acciones">
             <ItemTemplate>
                 <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" 
-                    CommandName="EliminarItem" 
+                    CommandName="EliminarProductoDelCarrito" 
                     CommandArgument='<%# Eval("ID") %>' 
-                    CssClass="btn btn-danger btn-sm" /> <%-- Clases de Bootstrap opcionales para estilo --%>
+                    CssClass="ui red mini button" /> <%%>
             </ItemTemplate>
         </asp:TemplateField>
         </Columns>
     </asp:GridView>
-    <h3>Total: <asp:Label ID="lblTotal" runat="server" Text="0"></asp:Label></h3>
-    <asp:Button ID="btnDescargarRecibo" runat="server" Text="Descargar Recibo" OnClick="btnDescargarRecibo_Click" />
+    <h3 class="ui header">Total: 
+    <asp:Label ID="lblTotal" runat="server" CssClass="ui teal label" />
+</h3>
+
+<asp:Button ID="btnDescargarRecibo" runat="server" 
+    Text="Descargar Recibo" 
+    CssClass="ui primary button"
+    OnClick="btnDescargarRecibo_Click" />
 
    </div>
 </asp:Content>

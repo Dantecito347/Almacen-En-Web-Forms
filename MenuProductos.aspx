@@ -25,7 +25,7 @@
 
         <asp:TemplateField HeaderText="Acción">
             <ItemTemplate>
-                <asp:Button ID="btnComprar" runat="server" CommandName="Comprar" CommandArgument='<%# Eval("ID") %>' CssClass="btn btn-success" Text="Comprar" />
+                <asp:Button ID="btnComprar" runat="server" CommandName="Comprar" CommandArgument='<%# Container.DataItemIndex %>' CssClass="btn btn-success" Text="Comprar" />
             </ItemTemplate>
         </asp:TemplateField>
     </Columns>
