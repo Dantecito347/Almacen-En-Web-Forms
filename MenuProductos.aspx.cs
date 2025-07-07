@@ -101,6 +101,8 @@ namespace Parcial_Nº2___Almacen
                     conn.Open();
                     cmd.ExecuteNonQuery();
                 }
+                DescontarStock(productoId, cantidad);
+                CargarLacteos();
 
                 lblMensaje.Text = $"Producto {nombre} agregado al carrito. Cantidad: {cantidad}";
             }
@@ -138,6 +140,8 @@ namespace Parcial_Nº2___Almacen
                     conn.Open();
                     cmd.ExecuteNonQuery();
                 }
+                DescontarStock(productoId, cantidad);
+                CargarLacteos();
 
                 lblMensaje.Text = $"Bebida {nombre} agregada al carrito. Cantidad: {cantidad}";
             }
@@ -176,6 +180,9 @@ namespace Parcial_Nº2___Almacen
                     cmd.ExecuteNonQuery();
                 }
 
+                DescontarStock(productoId, cantidad);
+                CargarLacteos();
+
                 lblMensaje.Text = $"Lácteo {nombre} agregado al carrito. Cantidad: {cantidad}";
             }
         }
@@ -183,6 +190,20 @@ namespace Parcial_Nº2___Almacen
         protected void btnVolver_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/MenuPrincipal.aspx");
+        }
+
+        private void DescontarStock(int productoId, int cantidad)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["AlmacenConnectionString"].ConnectionString;
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlCommand cmd = new SqlCommand("DescontarStock", conn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@ProductoID", productoId);
+                cmd.Parameters.AddWithValue("@Cantidad", cantidad);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
         }
     }
 }   

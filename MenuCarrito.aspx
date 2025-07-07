@@ -12,8 +12,19 @@
             <asp:BoundField DataField="Precio" HeaderText="Precio" DataFormatString="{0:C}" />
             <asp:BoundField DataField="Cantidad" HeaderText="Cantidad" />
             <asp:BoundField DataField="Subtotal" HeaderText="Subtotal" DataFormatString="{0:C}" />
+
+            <asp:TemplateField HeaderText="Acciones">
+            <ItemTemplate>
+                <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" 
+                    CommandName="EliminarItem" 
+                    CommandArgument='<%# Eval("ID") %>' 
+                    CssClass="btn btn-danger btn-sm" /> <%-- Clases de Bootstrap opcionales para estilo --%>
+            </ItemTemplate>
+        </asp:TemplateField>
         </Columns>
     </asp:GridView>
     <h3>Total: <asp:Label ID="lblTotal" runat="server" Text="0"></asp:Label></h3>
+    <asp:Button ID="btnDescargarRecibo" runat="server" Text="Descargar Recibo" OnClick="btnDescargarRecibo_Click" />
+
    </div>
 </asp:Content>

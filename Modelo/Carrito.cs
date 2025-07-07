@@ -10,7 +10,7 @@ namespace Parcial_Nº2___Almacen.Modelo
         public int ID { get; set; }
         public int ProductoID { get; set; }
         public string NombreProducto { get; set; }
-        public int Precio { get; set; }
+        public decimal Precio { get; set; }
         public int Cantidad { get; set; }
     }
 }

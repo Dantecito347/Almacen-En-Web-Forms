@@ -9,7 +9,7 @@ namespace Parcial_Nº2___Almacen.Modelo
     {
         public int ID { get; set; }
         public string Nombre { get; set; }
-        public int Precio { get; set; }
+        public decimal Precio { get; set; }
         public int Stock { get; set; }
     }
 }
