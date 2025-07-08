@@ -65,19 +65,15 @@ namespace Parcial_Nº2___Almacen
                 EliminarRepartidor(personaID);
                 CargarRepartidores();
             }
-            else 
-                 if (e.CommandName == "Seleccionar")
+            else if (e.CommandName == "Seleccionar")
             {
-                int index = Convert.ToInt32(e.CommandArgument); // Esto es PersonaID
+                Response.Write("<script>alert('Evento ejecutado');</script>");
                 GridViewRow row = ((Button)e.CommandSource).NamingContainer as GridViewRow;
+                string nombre = row.Cells[1].Text.Trim();
+                string apellido = row.Cells[2].Text.Trim();
 
-                string nombre = row.Cells[1].Text;    // Suponiendo que la celda 1 es Nombre
-                string apellido = row.Cells[2].Text;  // Celda 2 es Apellido
-
-                Session["PersonaID_RepartidorSeleccionado"] = index;
                 Session["RepartidorSeleccionado"] = $"{nombre} {apellido}";
-
-                Response.Redirect("MenuCarrito.aspx");
+                
             }
 
 
