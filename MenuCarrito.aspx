@@ -39,6 +39,7 @@
     <div class="ui clearing segment">
     <h3 class="ui right floated header">Total: 
     <asp:Label ID="lblTotal" runat="server" CssClass="ui teal circular label massive" />
+    <asp:Label ID="lblRepartidor" runat="server" CssClass="ui teal large label" />
 </h3>
     </div>
         <div class="ui buttons">

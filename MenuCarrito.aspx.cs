@@ -35,6 +35,16 @@ namespace Parcial_Nº2___Almacen
                 total = Convert.ToDecimal(ds.Tables[1].Rows[0]["Total"]);
             }
             lblTotal.Text = total.ToString("C");
+
+            if (Session["RepartidorSeleccionado"] != null)
+            {
+                lblRepartidor.Text = "Repartidor: " + Session["RepartidorSeleccionado"].ToString();
+            }
+            else
+            {
+                lblRepartidor.Text = "Repartidor: no seleccionado";
+            }
+
         }
 
         protected void gvCarrito_RowCommand(object sender, GridViewCommandEventArgs e)
