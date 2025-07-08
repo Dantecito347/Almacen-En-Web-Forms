@@ -24,6 +24,16 @@
                     CssClass="ui red mini button" /> <%%>
             </ItemTemplate>
         </asp:TemplateField>
+
+            <asp:TemplateField HeaderText="Modificar Cantidad">
+  <ItemTemplate>
+    <asp:TextBox ID="txtCantidad" runat="server" Text='<%# Eval("Cantidad") %>' CssClass="ui input mini" />
+    <asp:Button ID="btnActualizar" runat="server" Text="Actualizar"
+      CommandName="ModificarCantidad"
+      CommandArgument='<%# Eval("ID") %>'
+      CssClass="ui blue mini button" />
+  </ItemTemplate>
+</asp:TemplateField>
         </Columns>
     </asp:GridView>
     <div class="ui clearing segment">
@@ -110,3 +120,4 @@
         });
     </script>
 </asp:Content>
+

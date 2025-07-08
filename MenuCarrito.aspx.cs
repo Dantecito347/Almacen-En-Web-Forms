@@ -2,7 +2,9 @@
 using Parcial_Nº2___Almacen.Controlador;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -43,6 +45,20 @@ namespace Parcial_Nº2___Almacen
                 carritoController.EliminarProductoDelCarrito(carritoId);
                 CargarCarrito();
             }
+            else if (e.CommandName == "ModificarCantidad")
+            {
+                int carritoId = Convert.ToInt32(e.CommandArgument);
+                GridViewRow row = ((Button)e.CommandSource).NamingContainer as GridViewRow;
+                TextBox txtCantidad = (TextBox)row.FindControl("txtCantidad");
+
+                if (int.TryParse(txtCantidad.Text, out int nuevaCantidad) && nuevaCantidad > 0)
+                {
+                    ActualizarCantidad(carritoId, nuevaCantidad);
+                    CargarCarrito(); // vuelve a llenar el GridView con datos actualizados
+                }
+  
+            }
+
         }
 
         protected void btnFinalizarCompra_Click(object sender, EventArgs e)
@@ -94,7 +110,23 @@ namespace Parcial_Nº2___Almacen
             Response.End();
         }
 
- 
+
+        void ActualizarCantidad(int carritoId, int nuevaCantidad)
+        {
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["AlmacenConnectionString"].ConnectionString))
+            {
+                string query = "UPDATE Carrito SET Cantidad = @Cantidad WHERE ID = @ID";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@Cantidad", nuevaCantidad);
+                cmd.Parameters.AddWithValue("@ID", carritoId);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+
+
+
 
     }
 }

@@ -165,13 +165,13 @@ END
 
 CREATE PROCEDURE GestionarRepartidor
     @Accion VARCHAR(10), -- 'INSERTAR' o 'ELIMINAR'
-    @ID INT = NULL,
     @Nombre VARCHAR(50) = NULL,
     @Apellido VARCHAR(50) = NULL,
     @Email VARCHAR(100) = NULL,
     @Celular VARCHAR(20) = NULL,
     @Localidad VARCHAR(100) = NULL,
-    @TipoDeVehiculo VARCHAR(100) = NULL
+    @TipoDeVehiculo VARCHAR(100) = NULL,
+	@ProductoID INT = NULL,
 AS
 BEGIN
     IF @Accion = 'INSERTAR'
@@ -189,9 +189,9 @@ BEGIN
     END
     ELSE IF @Accion = 'ELIMINAR'
     BEGIN
-        IF EXISTS (SELECT 1 FROM Repartidores WHERE ID = @ID OR Email = @Email)
+        IF EXISTS (SELECT 1 FROM Repartidores WHERE PersonaID = @PersonaID OR Email = @Email)
         BEGIN
-            DELETE FROM Repartidores WHERE ID = @ID OR Email = @Email;
+            DELETE FROM Repartidores WHERE PersonaID = @PersonaID OR Email = @Email;
             PRINT 'Repartidor eliminado correctamente.';
         END
         ELSE
