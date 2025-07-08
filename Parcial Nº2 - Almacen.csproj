@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="BarraDeNavegacion.ascx" />
+    <Content Include="CartaImagen.ascx" />
     <Content Include="img\presentacion1.jpg" />
     <Content Include="img\presentacion2.jpg" />
     <Content Include="img\presentacion3.jpg" />
@@ -76,10 +77,8 @@
     <Content Include="MenuCarrito.aspx" />
     <Content Include="MenuEnvios.aspx" />
     <Content Include="MenuGestionarRepartidor.aspx" />
-    <Content Include="MenuOfertas.aspx" />
     <Content Include="MenuPrincipal.aspx" />
     <Content Include="MenuProductos.aspx" />
-    <Content Include="ProductoOferta.ascx" />
     <Content Include="styles\styles.css" />
     <Content Include="Subtitulos.ascx" />
     <Content Include="Web.config" />
@@ -92,6 +91,13 @@
     <Compile Include="BarraDeNavegacion.ascx.designer.cs">
       <DependentUpon>BarraDeNavegacion.ascx</DependentUpon>
     </Compile>
+    <Compile Include="CartaImagen.ascx.cs">
+      <DependentUpon>CartaImagen.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CartaImagen.ascx.designer.cs">
+      <DependentUpon>CartaImagen.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Controlador\MenuGestionarRepartidorControlador.cs" />
     <Compile Include="MenuGestionarRepartidor.aspx.cs">
       <DependentUpon>MenuGestionarRepartidor.aspx</DependentUpon>
@@ -99,13 +105,6 @@
     </Compile>
     <Compile Include="MenuGestionarRepartidor.aspx.designer.cs">
       <DependentUpon>MenuGestionarRepartidor.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="MenuOfertas.aspx.cs">
-      <DependentUpon>MenuOfertas.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MenuOfertas.aspx.designer.cs">
-      <DependentUpon>MenuOfertas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modelo\Carrito.cs" />
     <Compile Include="Controlador\CarritoControlador.cs" />
@@ -148,13 +147,6 @@
     </Compile>
     <Compile Include="MPIndex.Master.designer.cs">
       <DependentUpon>MPIndex.Master</DependentUpon>
-    </Compile>
-    <Compile Include="ProductoOferta.ascx.cs">
-      <DependentUpon>ProductoOferta.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ProductoOferta.ascx.designer.cs">
-      <DependentUpon>ProductoOferta.ascx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Subtitulos.ascx.cs">

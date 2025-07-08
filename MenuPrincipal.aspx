@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MPIndex.Master" AutoEventWireup="true" CodeBehind="MenuPrincipal.aspx.cs" Inherits="Parcial_Nº2___Almacen.MenuPrincipal" %>
     <%@ Register Src="/BarraDeNavegacion.ascx" TagName="BarraDeNavegacion" TagPrefix="uc" %>
+    <%@ Register Src="/CartaImagen.ascx" TagName="CartaImagen" TagPrefix="uc" %>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
 
@@ -34,6 +35,8 @@ Cada día trabajamos para sumar nuevos productos, con buenos precios y una atenc
   </div>
 </div>
 </div>
+
+        <uc:CartaImagen ID="CartaImagen" runat="server" />
   <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
   <script>
 const swiper = new Swiper('.swiper', {

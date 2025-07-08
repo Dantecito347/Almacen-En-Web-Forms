@@ -15,7 +15,7 @@
           Otros
         </a>
         <ul class="dropdown-menu" aria-labelledby="otrosDropdown">
-          <li><a class="dropdown-item" href="#">Ofertas</a></li>
+          <li><a class="dropdown-item" href="#">Ofertas (Próximamente)</a></li>
           <li><a class="dropdown-item" href="../MenuCarrito.aspx">Carrito</a></li>
           <li><hr class="dropdown-divider"></li>
 <li><a class="dropdown-item" href="https://maps.app.goo.gl/dKHxwz8oXwsP7RAJA" target="_blank" rel="noopener">Ubicación</a></li>

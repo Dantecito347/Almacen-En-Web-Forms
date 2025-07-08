@@ -13,6 +13,8 @@ namespace Parcial_Nº2___Almacen
 {
     public partial class MenuEnvios : System.Web.UI.Page
     {
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -20,6 +22,30 @@ namespace Parcial_Nº2___Almacen
                 CargarRepartidores();
             }
         }
+
+        private DataRow ObtenerDatosRepartidor(int personaID)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["AlmacenConnectionString"].ConnectionString;
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("SELECT Nombre, Apellido FROM Repartidores WHERE PersonaID = @PersonaID", conn))
+                {
+                    cmd.Parameters.AddWithValue("@PersonaID", personaID);
+                    DataTable dt = new DataTable();
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+                    conn.Open();
+                    da.Fill(dt);
+
+                    if (dt.Rows.Count > 0)
+                    {
+                        return dt.Rows[0];
+                    }
+                }
+            }
+            return null; 
+        }
+
 
         private void CargarRepartidores()
         {
@@ -65,20 +91,23 @@ namespace Parcial_Nº2___Almacen
                 EliminarRepartidor(personaID);
                 CargarRepartidores();
             }
-            else 
-                 if (e.CommandName == "Seleccionar")
+            else if (e.CommandName == "Seleccionar")
             {
-                int index = Convert.ToInt32(e.CommandArgument); // Esto es PersonaID
-                GridViewRow row = ((Button)e.CommandSource).NamingContainer as GridViewRow;
+                int personaID = Convert.ToInt32(e.CommandArgument);
 
-                string nombre = row.Cells[1].Text;    // Suponiendo que la celda 1 es Nombre
-                string apellido = row.Cells[2].Text;  // Celda 2 es Apellido
 
-                Session["PersonaID_RepartidorSeleccionado"] = index;
-                Session["RepartidorSeleccionado"] = $"{nombre} {apellido}";
+                DataRow repartidorData = ObtenerDatosRepartidor(personaID);
 
-                Response.Redirect("MenuCarrito.aspx");
-            }
+                if (repartidorData != null)
+                {
+                    string nombre = repartidorData["Nombre"].ToString();
+                    string apellido = repartidorData["Apellido"].ToString();
+                    Session["PersonaID_RepartidorSeleccionado"] = personaID;
+                    Session["RepartidorSeleccionado"] = $"{nombre} {apellido}";
+                    Response.Redirect("MenuCarrito.aspx");
+                }
+            
+        }
 
 
         }

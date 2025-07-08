@@ -22,5 +22,14 @@ namespace Parcial_Nº2___Almacen
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Parcial_Nº2___Almacen.BarraDeNavegacion NavBar1;
+
+        /// <summary>
+        /// Control CartaImagen.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Parcial_Nº2___Almacen.CartaImagen CartaImagen;
     }
 }

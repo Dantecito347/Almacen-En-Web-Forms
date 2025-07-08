@@ -11,7 +11,7 @@ namespace Parcial_Nº2___Almacen
 {
 
 
-    public partial class ProductoOferta
+    public partial class CartaImagen
     {
     }
 }

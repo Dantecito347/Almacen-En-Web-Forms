@@ -20,6 +20,7 @@ namespace Parcial_Nº2___Almacen
             {
                 CargarCarrito();
             }
+
         }
 
         private void CargarCarrito()
