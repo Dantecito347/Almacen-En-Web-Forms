@@ -93,6 +93,7 @@ namespace Parcial_Nº2___Almacen
             }
             else if (e.CommandName == "Seleccionar")
             {
+<<<<<<< HEAD
                 int personaID = Convert.ToInt32(e.CommandArgument);
 
 
@@ -108,6 +109,16 @@ namespace Parcial_Nº2___Almacen
                 }
             
         }
+=======
+                Response.Write("<script>alert('Evento ejecutado');</script>");
+                GridViewRow row = ((Button)e.CommandSource).NamingContainer as GridViewRow;
+                string nombre = row.Cells[1].Text.Trim();
+                string apellido = row.Cells[2].Text.Trim();
+
+                Session["RepartidorSeleccionado"] = $"{nombre} {apellido}";
+                
+            }
+>>>>>>> 16605bdb3ad2fe0e7cb21c0474ab0b45d6675d77
 
 
         }

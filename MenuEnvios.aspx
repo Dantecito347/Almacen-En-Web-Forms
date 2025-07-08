@@ -21,7 +21,7 @@
             <asp:TemplateField HeaderText="Acciones">
               <ItemTemplate>
                 <asp:Button ID="btnEliminar" runat="server" CommandName="Eliminar" CommandArgument='<%# Eval("PersonaID") %>' Text="Eliminar" CssClass="btn btn-danger btn-sm" />
-                <asp:Button ID="btnSeleccionar" runat="server" ComandName="Seleccionar" CommandArgument='<%# Eval("PersonaID") %>' Text="Seleccionar" CssClass="btn btn-danger btn-sm" />
+                <asp:Button ID="btnSeleccionar" runat="server" CommandName="Seleccionar" CommandArgument='<%# Eval("PersonaID") %>' Text="Seleccionar" CssClass="btn btn-danger btn-sm" />
               </ItemTemplate>
             </asp:TemplateField>
         </Columns>
