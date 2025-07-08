@@ -93,33 +93,15 @@ namespace Parcial_Nº2___Almacen
             }
             else if (e.CommandName == "Seleccionar")
             {
-<<<<<<< HEAD
-                int personaID = Convert.ToInt32(e.CommandArgument);
 
-
-                DataRow repartidorData = ObtenerDatosRepartidor(personaID);
-
-                if (repartidorData != null)
-                {
-                    string nombre = repartidorData["Nombre"].ToString();
-                    string apellido = repartidorData["Apellido"].ToString();
-                    Session["PersonaID_RepartidorSeleccionado"] = personaID;
-                    Session["RepartidorSeleccionado"] = $"{nombre} {apellido}";
-                    Response.Redirect("MenuCarrito.aspx");
-                }
-            
-        }
-=======
                 Response.Write("<script>alert('Evento ejecutado');</script>");
                 GridViewRow row = ((Button)e.CommandSource).NamingContainer as GridViewRow;
                 string nombre = row.Cells[1].Text.Trim();
                 string apellido = row.Cells[2].Text.Trim();
 
                 Session["RepartidorSeleccionado"] = $"{nombre} {apellido}";
-                
-            }
->>>>>>> 16605bdb3ad2fe0e7cb21c0474ab0b45d6675d77
-
+            }    
+            
 
         }
     }
