@@ -74,6 +74,7 @@
     <Content Include="MenuPrincipal.aspx" />
     <Content Include="MenuProductos.aspx" />
     <Content Include="styles\styles.css" />
+    <Content Include="Subtitulos.ascx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -135,6 +136,13 @@
       <DependentUpon>MPIndex.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Subtitulos.ascx.cs">
+      <DependentUpon>Subtitulos.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Subtitulos.ascx.designer.cs">
+      <DependentUpon>Subtitulos.ascx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="MPIndex.Master" />

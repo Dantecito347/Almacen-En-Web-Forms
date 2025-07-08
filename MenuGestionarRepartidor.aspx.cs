@@ -35,5 +35,7 @@ namespace Parcial_Nº2___Almacen
                 txtNombre.Text = txtApellido.Text = txtEmail.Text = txtCelular.Text = txtLocalidad.Text = txtVehiculo.Text = "";
             }
         }
+
+       
     }
 }
