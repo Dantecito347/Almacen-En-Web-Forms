@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Configuration;
 
 
 namespace Parcial_Nº2___Almacen
@@ -35,12 +36,19 @@ namespace Parcial_Nº2___Almacen
 
         private void EliminarRepartidor(int personaID)
         {
-            using (SqlConnection conn = new SqlConnection("AlmacenConnectionString"))
+            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["AlmacenConnectionString"].ConnectionString;
+            using (SqlConnection conn = new SqlConnection(connectionString))
             using (SqlCommand cmd = new SqlCommand("GestionarRepartidor", conn))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@Accion", "ELIMINAR");
                 cmd.Parameters.AddWithValue("@PersonaID", personaID);
+                cmd.Parameters.AddWithValue("@Nombre", DBNull.Value);
+                cmd.Parameters.AddWithValue("@Apellido", DBNull.Value);
+                cmd.Parameters.AddWithValue("@Email", DBNull.Value);
+                cmd.Parameters.AddWithValue("@Celular", DBNull.Value);
+                cmd.Parameters.AddWithValue("@Localidad", DBNull.Value);
+                cmd.Parameters.AddWithValue("@TipoDeVehiculo", DBNull.Value);
 
 
                 conn.Open();
@@ -55,6 +63,7 @@ namespace Parcial_Nº2___Almacen
             {
                 int personaID = Convert.ToInt32(e.CommandArgument);
                 EliminarRepartidor(personaID);
+                CargarRepartidores();
             }
 
 
