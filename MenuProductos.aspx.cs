@@ -1,5 +1,4 @@
-﻿// MenuProductos.aspx.cs (Versión Corregida)
-using Parcial_Nº2___Almacen.Controlador;
+﻿using Parcial_Nº2___Almacen.Controlador;
 using System;
 using System.Data;
 using System.Linq;
@@ -9,7 +8,6 @@ namespace Parcial_Nº2___Almacen
 {
     public partial class MenuProductos : System.Web.UI.Page
     {
-        // Instancia los controladores una sola vez
         private MenuAlimentosControlador menuController = new MenuAlimentosControlador();
         private CarritoControlador carritoController = new CarritoControlador();
 
@@ -25,7 +23,6 @@ namespace Parcial_Nº2___Almacen
 
         private void CargarProductos()
         {
-            // Este método ahora usará el controlador
             gvProductos.DataSource = menuController.ObtenerAlimentos();
             gvProductos.DataBind();
         }
@@ -42,7 +39,6 @@ namespace Parcial_Nº2___Almacen
             gvLacteos.DataBind();
         }
 
-        // El método ObtenerDatos() ya no es necesario aquí. Lo borramos.
 
         protected void gvProductos_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -52,13 +48,12 @@ namespace Parcial_Nº2___Almacen
                 GridViewRow row = gvProductos.Rows[rowIndex];
 
                 int productoId = Convert.ToInt32(gvProductos.DataKeys[rowIndex].Values["ID"]);
-                string nombre = row.Cells[1].Text; // Asumiendo que el nombre está en la segunda celda
+                string nombre = row.Cells[1].Text; 
                 decimal precio = Convert.ToDecimal(gvProductos.DataKeys[rowIndex].Values["Precio"]);
                 TextBox txtCantidad = (TextBox)row.FindControl("txtCantidad");
 
                 if (int.TryParse(txtCantidad.Text, out int cantidad) && cantidad > 0)
                 {
-                    // Lógica simplificada y correcta
                     carritoController.AgregarAlCarrito(productoId, nombre, precio, cantidad);
                     lblMensaje.Text = $"Producto '{nombre}' agregado al carrito.";
                 }
@@ -66,7 +61,6 @@ namespace Parcial_Nº2___Almacen
                 {
                     lblMensaje.Text = "Error: Ingrese una cantidad válida.";
                 }
-                // YA NO HAY MÁS CÓDIGO AQUÍ. Se borró el acceso directo a la BD.
             }
         }
 
@@ -117,7 +111,5 @@ namespace Parcial_Nº2___Almacen
                 }
             }
         }
-
-        // El método DescontarStock() ya no debe estar aquí. Bórralo.
     }
 }

@@ -60,15 +60,6 @@ namespace Parcial_Nº2___Almacen
         protected global::System.Web.UI.WebControls.Button btnDescargarRecibo;
 
         /// <summary>
-        /// Control btnVaciarCarrito.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnVaciarCarrito;
-
-        /// <summary>
         /// Control btnFinalizarCompra.
         /// </summary>
         /// <remarks>
@@ -85,14 +76,5 @@ namespace Parcial_Nº2___Almacen
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnConfirmarFinalizar;
-
-        /// <summary>
-        /// Control btnConfirmarVaciar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnConfirmarVaciar;
     }
 }

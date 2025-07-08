@@ -1,5 +1,4 @@
-﻿// MenuCarrito.aspx.cs (Versión Corregida)
-using Parcial_Nº2___Almacen.Controlador;
+﻿using Parcial_Nº2___Almacen.Controlador;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -10,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace Parcial_Nº2___Almacen
 {
-    public partial class WebForm1 : System.Web.UI.Page // Asegúrate que el nombre de la clase coincida
+    public partial class WebForm1 : System.Web.UI.Page 
     {
         private CarritoControlador carritoController = new CarritoControlador();
 
@@ -65,7 +64,7 @@ namespace Parcial_Nº2___Almacen
                 if (int.TryParse(txtCantidad.Text, out int nuevaCantidad) && nuevaCantidad > 0)
                 {
                     ActualizarCantidad(carritoId, nuevaCantidad);
-                    CargarCarrito(); // vuelve a llenar el GridView con datos actualizados
+                    CargarCarrito(); 
                 }
   
             }
@@ -77,27 +76,16 @@ namespace Parcial_Nº2___Almacen
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#modalFinalizar').modal('show');", true);
         }
 
-        protected void btnVaciarCarrito_Click(object sender, EventArgs e)
-        {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#modalVaciar').modal('show');", true);
-        }
-
         protected void btnConfirmarFinalizar_Click(object sender, EventArgs e)
         {
-            // Esta es la acción REAL de finalizar la compra
+
             carritoController.FinalizarCompra();
             Response.Redirect("CompraExitosa.aspx");
         }
 
-        protected void btnConfirmarVaciar_Click(object sender, EventArgs e)
-        {
-            // Esta es la acción REAL de vaciar el carrito
-            carritoController.VaciarCarrito();
-            CargarCarrito(); // Recargamos el carrito (ahora vacío)
-        }
         protected void btnDescargarRecibo_Click(object sender, EventArgs e)
         {
-            // Lógica refactorizada para usar el controlador
+
             DataSet ds = carritoController.ObtenerCarritoConTotal();
             DataTable dtItems = ds.Tables[0];
             decimal total = Convert.ToDecimal(ds.Tables[1].Rows[0]["Total"] ?? 0);

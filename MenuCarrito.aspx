@@ -48,11 +48,6 @@
     CssClass="ui primary button"
     OnClick="btnDescargarRecibo_Click" />
 
-<asp:Button ID="btnVaciarCarrito" runat="server" 
-    Text="Vaciar carrito" 
-    CssClass="ui grey button"
-    OnClick="btnVaciarCarrito_Click" />
-
 <asp:Button ID="btnFinalizarCompra" runat="server" 
     Text="Finalizar Compra" 
     CssClass="ui primary positive button" 
@@ -60,7 +55,6 @@
 </div>
     <div style="display: none;">
             <asp:Button ID="btnConfirmarFinalizar" runat="server" OnClick="btnConfirmarFinalizar_Click" />
-            <asp:Button ID="btnConfirmarVaciar" runat="server" OnClick="btnConfirmarVaciar_Click" />
         </div>
 
    </div>
@@ -81,22 +75,6 @@
         </div>
     </div>
 
-    <!-- MODAL PARA VACIAR CARRITO -->
-    <div class="ui mini modal" id="modalVaciar">
-        <div class="header">
-            Vaciar Carrito
-        </div>
-        <div class="content">
-            <p>¿Estás seguro de que deseas vaciar el carrito? Se repondrá el stock de los productos.</p>
-        </div>
-        <div class="actions">
-            <div class="ui button" id="btnNoVaciar">No</div>
-            <div class="ui red right labeled icon button" id="btnSiVaciar">
-                Sí, vaciar
-                <i class="trash icon"></i>
-            </div>
-        </div>
-    </div>
     <script>
         $(document).ready(function () {
             // --- Lógica para el modal de Finalizar Compra ---
@@ -109,15 +87,7 @@
                 $('#modalFinalizar').modal('hide');
             });
 
-            // --- Lógica para el modal de Vaciar Carrito ---
-            // El botón "Sí" del modal hace clic en el botón oculto de ASP.NET
-            $('#btnSiVaciar').on('click', function () {
-                $('#<%= btnConfirmarVaciar.ClientID %>').click();
-            });
-            // El botón "No" simplemente cierra el modal
-            $('#btnNoVaciar').on('click', function () {
-                $('#modalVaciar').modal('hide');
-            });
+ 
         });
     </script>
 </asp:Content>
