@@ -71,17 +71,7 @@ namespace Parcial_Nº2___Almacen
 
         }
 
-        protected void btnFinalizarCompra_Click(object sender, EventArgs e)
-        {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#modalFinalizar').modal('show');", true);
-        }
 
-        protected void btnConfirmarFinalizar_Click(object sender, EventArgs e)
-        {
-
-            carritoController.FinalizarCompra();
-            Response.Redirect("CompraExitosa.aspx");
-        }
 
         protected void btnDescargarRecibo_Click(object sender, EventArgs e)
         {

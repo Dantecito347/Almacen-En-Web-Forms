@@ -47,48 +47,9 @@
     Text="Descargar Recibo" 
     CssClass="ui primary button"
     OnClick="btnDescargarRecibo_Click" />
-
-<asp:Button ID="btnFinalizarCompra" runat="server" 
-    Text="Finalizar Compra" 
-    CssClass="ui primary positive button" 
-    OnClick="btnFinalizarCompra_Click" />
 </div>
-    <div style="display: none;">
-            <asp:Button ID="btnConfirmarFinalizar" runat="server" OnClick="btnConfirmarFinalizar_Click" />
-        </div>
+
 
    </div>
-
-    <div class="ui mini modal" id="modalFinalizar">
-        <div class="header">
-            Confirmar Compra
-        </div>
-        <div class="content">
-            <p>¿Estás seguro de que deseas finalizar tu compra?</p>
-        </div>
-        <div class="actions">
-            <div class="ui negative button" id="btnNoFinalizar">No</div>
-            <div class="ui positive right labeled icon button" id="btnSiFinalizar">
-                Sí, finalizar
-                <i class="checkmark icon"></i>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        $(document).ready(function () {
-            // --- Lógica para el modal de Finalizar Compra ---
-            // El botón "Sí" del modal hace clic en el botón oculto de ASP.NET
-            $('#btnSiFinalizar').on('click', function () {
-                $('#<%= btnConfirmarFinalizar.ClientID %>').click();
-            });
-            // El botón "No" simplemente cierra el modal
-            $('#btnNoFinalizar').on('click', function () {
-                $('#modalFinalizar').modal('hide');
-            });
-
- 
-        });
-    </script>
 </asp:Content>
 
