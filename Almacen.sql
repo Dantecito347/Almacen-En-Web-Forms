@@ -141,6 +141,8 @@ BEGIN
     INSERT INTO Carrito (ProductoID, NombreProducto, Precio, Cantidad)
     VALUES (@ProductoID, @NombreProducto, @Precio, @Cantidad);
 END
+GO
+
 
 ALTER PROCEDURE EliminarProductoDelCarrito
     @CarritoID INT
