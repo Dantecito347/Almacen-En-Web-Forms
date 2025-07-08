@@ -10,26 +10,29 @@
       
 
     <h1 class="title is-2 has-text-white">¡Bienvenido a Lo de Juan!</h1>
-    <p class="subtitle is-4 has-text-white">Productos frescos, ofertas increíbles y más 🍞🧀🥩</p>
+    <p class="subtitle is-4 has-text-white">Somos un emprendimiento familiar joven, 
+        en constante crecimiento pero con corazón de almacén de barrio.
+Cada día trabajamos para sumar nuevos productos, con buenos precios y una atención personalizada.</p>
   </div>
 
   <!-- Carrusel Swiper -->
-  <div class="swiper">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide">
-        <img src="https://source.unsplash.com/1200x400/?groceries" alt="Groceries">
-      </div>
-      <div class="swiper-slide">
-        <img src="https://source.unsplash.com/1200x400/?market" alt="Market">
-      </div>
-      <div class="swiper-slide">
-        <img src="https://source.unsplash.com/1200x400/?food" alt="Food">
-      </div>
-      <div class="swiper-slide">
-        <img src="https://source.unsplash.com/1200x400/?vegetables" alt="Vegetables">
-      </div>
-    </div>
+<div class="swiper-wrapper">
+  <div class="swiper-slide">
+    <img src="~/img/presentacion1.jpg" runat="server" />
   </div>
+  <div class="swiper-slide">
+    <img src="~/img/presentacion2.jpg" runat="server" />
+  </div>
+  <div class="swiper-slide">
+    <img src="~/img/presentacion3.jpg" runat="server" />
+  </div>
+  <div class="swiper-slide">
+    <img src="~/img/presentacion4.jpg" runat="server" />
+  </div>
+  <div class="swiper-slide">
+    <img src="~/img/presentacion5.jpg" runat="server" />
+  </div>
+</div>
 </div>
   <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
   <script>

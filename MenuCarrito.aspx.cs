@@ -103,6 +103,9 @@ namespace Parcial_Nº2___Almacen
 
             List<string> lineas = new List<string>();
             lineas.Add("RECIBO DE COMPRA");
+            lineas.Add("----------------------"); 
+            lineas.Add("Almacen 'Lo de Juan'");
+            lineas.Add($"Fecha: {DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}");
             lineas.Add("----------------------");
             foreach (DataRow row in dtItems.Rows)
             {
