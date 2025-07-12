@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MPIndex.Master" AutoEventWireup="true" CodeBehind="MenuPrincipal.aspx.cs" Inherits="Parcial_Nº2___Almacen.MenuPrincipal" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="/MPIndex.Master" AutoEventWireup="true" CodeBehind="MenuPrincipal.aspx.cs" Inherits="Parcial_Nº2___Almacen.MenuPrincipal" %>
     <%@ Register Src="/BarraDeNavegacion.ascx" TagName="BarraDeNavegacion" TagPrefix="uc" %>
     <%@ Register Src="/CartaImagen.ascx" TagName="CartaImagen" TagPrefix="uc" %>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
