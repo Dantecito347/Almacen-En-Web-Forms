@@ -104,10 +104,6 @@
     <Compile Include="CartaImagen.ascx.designer.cs">
       <DependentUpon>CartaImagen.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Controlador\CarritoControlador.cs" />
-    <Compile Include="Controlador\MenuAlimentosControlador.cs" />
-    <Compile Include="Controlador\MenuEnviosControlador.cs" />
-    <Compile Include="Controlador\MenuGestionarRepartidorControlador.cs" />
     <Compile Include="MenuGestionarRepartidor.aspx.cs">
       <DependentUpon>MenuGestionarRepartidor.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -143,10 +139,6 @@
     <Compile Include="MenuProductos.aspx.designer.cs">
       <DependentUpon>MenuProductos.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Modelo\BaseDeDatos.cs" />
-    <Compile Include="Modelo\Carrito.cs" />
-    <Compile Include="Modelo\Producto.cs" />
-    <Compile Include="Modelo\Repartidor.cs" />
     <Compile Include="MPIndex.Master.cs">
       <DependentUpon>MPIndex.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
