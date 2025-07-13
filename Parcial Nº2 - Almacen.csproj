@@ -42,6 +42,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+ <Content Include="roslyn\**\*.*">
+  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+</Content>
+ <Content Include="roslyn\csc.exe">
+   <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+ </Content>
+ <Content Include="roslyn\vbc.exe">
+   <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+ </Content> 
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\lib\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
