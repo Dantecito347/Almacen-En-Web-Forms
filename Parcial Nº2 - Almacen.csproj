@@ -82,6 +82,30 @@
     <Content Include="MenuGestionarRepartidor.aspx" />
     <Content Include="MenuPrincipal.aspx" />
     <Content Include="MenuProductos.aspx" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\tools\Roslyn-4.1.0\csc.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\tools\Roslyn-4.1.0\csi.exe" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\tools\Roslyn-4.1.0\Microsoft.Build.Tasks.CodeAnalysis.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\tools\Roslyn-4.1.0\Microsoft.CodeAnalysis.CSharp.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\tools\Roslyn-4.1.0\Microsoft.CodeAnalysis.CSharp.Scripting.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\tools\Roslyn-4.1.0\Microsoft.CodeAnalysis.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\tools\Roslyn-4.1.0\Microsoft.CodeAnalysis.Scripting.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\tools\Roslyn-4.1.0\Microsoft.CodeAnalysis.VisualBasic.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\tools\Roslyn-4.1.0\Microsoft.DiaSymReader.Native.amd64.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\tools\Roslyn-4.1.0\Microsoft.DiaSymReader.Native.x86.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\tools\Roslyn-4.1.0\System.Buffers.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\tools\Roslyn-4.1.0\System.Collections.Immutable.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\tools\Roslyn-4.1.0\System.Memory.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\tools\Roslyn-4.1.0\System.Numerics.Vectors.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\tools\Roslyn-4.1.0\System.Reflection.Metadata.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\tools\Roslyn-4.1.0\System.Runtime.CompilerServices.Unsafe.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\tools\Roslyn-4.1.0\System.Text.Encoding.CodePages.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\tools\Roslyn-4.1.0\System.Threading.Tasks.Extensions.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\tools\Roslyn-4.1.0\vbc.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\tools\Roslyn-4.1.0\VBCSCompiler.exe" />
     <Content Include="styles\styles.css" />
     <Content Include="Subtitulos.ascx" />
     <Content Include="Web.config" />
@@ -155,6 +179,17 @@
   <ItemGroup>
     <Content Include="MPIndex.Master" />
     <None Include="packages.config" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\tools\Roslyn-4.1.0\csc.exe.config" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\tools\Roslyn-4.1.0\csc.rsp" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\tools\Roslyn-4.1.0\csi.exe.config" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\tools\Roslyn-4.1.0\csi.rsp" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\tools\Roslyn-4.1.0\Microsoft.CSharp.Core.targets" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\tools\Roslyn-4.1.0\Microsoft.Managed.Core.CurrentVersions.targets" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\tools\Roslyn-4.1.0\Microsoft.Managed.Core.targets" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\tools\Roslyn-4.1.0\Microsoft.VisualBasic.Core.targets" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\tools\Roslyn-4.1.0\vbc.exe.config" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\tools\Roslyn-4.1.0\vbc.rsp" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\tools\Roslyn-4.1.0\VBCSCompiler.exe.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
