@@ -1,4 +1,4 @@
-# Formularios web finales de Almacén
+# Alamcen Web Forms
 
 Esta es una aplicación Web Forms desarrollada en Microsoft Visual Studio 2025 con ASP.NET respetando 
 la arquitectura MVC distribuida en bibliotecas de clases y el proyecto base en el cual utilizamos C#, CSS 
