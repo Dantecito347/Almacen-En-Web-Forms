@@ -4,6 +4,9 @@ GO
 USE Almacen;
 GO
 
+-- CREACIÓN DE TABLAS PARA LAS DISTINTAS FUNCIONALIDADES Y SUS DATOS
+-- TABLA DE PRODUCTOS => ALIMENTOS
+
 CREATE TABLE Productos_Alimentos (
 ID INT PRIMARY KEY IDENTITY(1,1),
 Nombre VARCHAR(100) NOT NULL,
@@ -46,6 +49,8 @@ INSERT INTO Productos_Alimentos (ID, Nombre, Precio, Stock) VALUES
 
 SET IDENTITY_INSERT Productos_Alimentos OFF;
 
+-- TABLA DE PRODUCTOS => BEBIDAS
+
 CREATE TABLE Productos_Bebidas (
 ID INT PRIMARY KEY IDENTITY(1,1),
 Nombre VARCHAR(100) NOT NULL,
@@ -66,6 +71,8 @@ INSERT INTO Productos_Bebidas (ID, Nombre, Precio, Stock) VALUES
 (8, 'Jugo Multifruta Brio Villa del Sur', 920.00, 60);
 
 SET IDENTITY_INSERT Productos_Bebidas OFF;
+
+-- TABLA DE PRODUCTOS => LACTEOS
 
 CREATE TABLE Productos_Lacteos (
 ID INT PRIMARY KEY IDENTITY(1,1),
@@ -91,6 +98,9 @@ INSERT INTO Productos_Lacteos (ID, Nombre, Precio, Stock) VALUES
 
 SET IDENTITY_INSERT Productos_Lacteos OFF;
 
+
+--    TABLA DE REPARTIDORES  CON SUS DATOS
+
 CREATE TABLE Repartidores (
 PersonaID INT PRIMARY KEY IDENTITY(1,1),
 Nombre VARCHAR(50) NOT NULL,
@@ -112,6 +122,9 @@ INSERT INTO Repartidores (PersonaID, Nombre, Apellido, Email, Celular, Localidad
 
 SET IDENTITY_INSERT Repartidores OFF;  
 
+
+--    TABLA DE CARRITO EN LA CUAL SE ALMACENAN LOS PRODUCTOS QUE UNO COMPRA
+
 CREATE TABLE Carrito (
 ID INT PRIMARY KEY IDENTITY(1,1),
 ProductoID INT NOT NULL,
@@ -119,6 +132,12 @@ NombreProducto VARCHAR(100) NOT NULL,
 Precio DECIMAL(10,2) NOT NULL,
 Cantidad INT NOT NULL
 );
+
+
+-- CREACIÓN DE PROCEDIMIENTOS ALMACENADOS PARA LAS DISTINTAS FUNCIONALIDADES DE LA APP
+
+-- OBTENER LOS PRODUCTOS DEL CARRITO
+
 
 CREATE PROCEDURE ObtenerCarritoConTotal
 AS
@@ -130,6 +149,9 @@ BEGIN
     FROM Carrito;
 END
 GO
+
+
+-- AGREGAR UN PRODUCTO AL CARRITO
 
 CREATE PROCEDURE AgregarProductoAlCarrito
     @ProductoID INT,
@@ -144,6 +166,9 @@ END
 GO
 
 
+-- OJO, REVISAR ESTO DE ELIMINAR, DEBERÍA SER CREATE Y NO ALTER
+
+
 ALTER PROCEDURE EliminarProductoDelCarrito
     @CarritoID INT
 AS
@@ -152,6 +177,8 @@ BEGIN
     WHERE ID = @CarritoID;
 END
 
+
+-- ACTUALIZAR LA CANTIDAD DEL PRODUCTO
 
 CREATE PROCEDURE ActualizarCantidadProducto
     @CarritoID INT,
@@ -162,6 +189,9 @@ BEGIN
     SET Cantidad = @NuevaCantidad
     WHERE ID = @CarritoID;
 END
+
+
+-- AGREGAR O ELIMINAR UN REPARTIDOR
 
 CREATE PROCEDURE GestionarRepartidor
     @Accion VARCHAR(10), -- 'INSERTAR' o 'ELIMINAR'
@@ -206,6 +236,8 @@ BEGIN
 END;
 
 
+-- DESCONTAR EL STOCK AL MOMENTO DE COMPRAR
+
 
 CREATE PROCEDURE DescontarStock
   @ProductoID INT,
@@ -246,6 +278,9 @@ GO
 
 
 
+--  REPONER EL STOCK CUANDO SE ELIMINA DEL CARRITO
+
+
   CREATE PROCEDURE ReponerStock
     @ProductoID INT,
     @Cantidad   INT
@@ -273,3 +308,5 @@ BEGIN
     END
 END
 GO
+
+-- FIN =D
