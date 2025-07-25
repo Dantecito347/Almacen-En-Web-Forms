@@ -54,8 +54,10 @@ namespace Parcial_Nº2___Almacen
 
                 if (int.TryParse(txtCantidad.Text, out int cantidad) && cantidad > 0)
                 {
-                    carritoController.AgregarAlCarrito(productoId, nombre, precio, cantidad);
+                    carritoController.AgregarAlCarrito(productoId, nombre, precio, cantidad, "Alimento" );
                     lblMensaje.Text = $"Producto '{nombre}' agregado al carrito.";
+                    carritoController.DescontarStock(productoId, cantidad, "Alimento");
+                    CargarProductos();
                 }
                 else
                 {
@@ -78,8 +80,10 @@ namespace Parcial_Nº2___Almacen
 
                 if (int.TryParse(txtCantidad.Text, out int cantidad) && cantidad > 0)
                 {
-                    carritoController.AgregarAlCarrito(productoId, nombre, precio, cantidad);
+                    carritoController.AgregarAlCarrito(productoId, nombre, precio, cantidad, "Bebida");
                     lblMensaje.Text = $"Bebida '{nombre}' agregada al carrito.";
+                    carritoController.DescontarStock(productoId, cantidad, "Bebida");
+                    CargarBebidas();
                 }
                 else
                 {
@@ -102,8 +106,10 @@ namespace Parcial_Nº2___Almacen
 
                 if (int.TryParse(txtCantidad.Text, out int cantidad) && cantidad > 0)
                 {
-                    carritoController.AgregarAlCarrito(productoId, nombre, precio, cantidad);
+                    carritoController.AgregarAlCarrito(productoId, nombre, precio, cantidad, "Lacteo" );
                     lblMensaje.Text = $"Lácteo '{nombre}' agregado al carrito.";
+                    carritoController.DescontarStock(productoId, cantidad, "Lacteo");
+                    CargarLacteos();
                 }
                 else
                 {

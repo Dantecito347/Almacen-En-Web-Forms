@@ -150,6 +150,7 @@ BEGIN
 END
 GO
 
+EXEC ObtenerCarritoConTotal;
 
 -- AGREGAR UN PRODUCTO AL CARRITO
 
@@ -160,22 +161,38 @@ CREATE PROCEDURE AgregarProductoAlCarrito
     @Cantidad INT
 AS
 BEGIN
+	IF BEGIN 
+	IF EXISTS (SELECT 1 FROM Carrito WHERE ProductoID = @ProductoID)
+	BEGIN 
+		PRINT 'Este producto ya está agregado';
+		END
+		ELSE
+		BEGIN
     INSERT INTO Carrito (ProductoID, NombreProducto, Precio, Cantidad)
     VALUES (@ProductoID, @NombreProducto, @Precio, @Cantidad);
 END
+END;
 GO
 
+EXEC AgregarProductoAlCarrito 
+    @ProductoID = NULL,
+	@NombreProducto = NULL,
+	@Precio = NULL,
+    @Cantidad = NULL;
 
 -- OJO, REVISAR ESTO DE ELIMINAR, DEBERÍA SER CREATE Y NO ALTER
 
 
-ALTER PROCEDURE EliminarProductoDelCarrito
+CREATE PROCEDURE EliminarProductoDelCarrito
     @CarritoID INT
 AS
 BEGIN
     DELETE FROM Carrito
     WHERE ID = @CarritoID;
 END
+
+EXEC EliminarProductoDelCarrito 
+    @CarritoID = 3;
 
 
 -- ACTUALIZAR LA CANTIDAD DEL PRODUCTO
@@ -189,6 +206,10 @@ BEGIN
     SET Cantidad = @NuevaCantidad
     WHERE ID = @CarritoID;
 END
+
+EXEC ActualizarCantidadProducto 
+    @CarritoID = 3, 
+    @NuevaCantidad = 7;
 
 
 -- AGREGAR O ELIMINAR UN REPARTIDOR
@@ -235,31 +256,40 @@ BEGIN
     END
 END;
 
+EXEC GestionarRepartidor 
+    @Accion = 'INSERTAR',
+    @Nombre = 'Lola',
+    @Apellido = 'Campos',
+    @Email = 'lola.campos@example.com',
+    @Celular = '1122334455',
+    @Localidad = 'Villa Ballester',
+    @TipoDeVehiculo = 'Moto';
 
 -- DESCONTAR EL STOCK AL MOMENTO DE COMPRAR
 
 
 CREATE PROCEDURE DescontarStock
   @ProductoID INT,
-  @Cantidad   INT
+  @Cantidad   INT,
+  @Tipo       NVARCHAR(20)
 AS
 BEGIN
   SET NOCOUNT ON;
   BEGIN TRAN;
 
-  IF EXISTS(SELECT 1 FROM Productos_Alimentos   WHERE ID = @ProductoID)
+  IF @Tipo = 'Alimento'
   BEGIN
     UPDATE Productos_Alimentos
       SET Stock = Stock - @Cantidad
     WHERE ID = @ProductoID;
   END
-  ELSE IF EXISTS(SELECT 1 FROM Productos_Bebidas    WHERE ID = @ProductoID)
+  ELSE IF @Tipo = 'Bebida'
   BEGIN
     UPDATE Productos_Bebidas
       SET Stock = Stock - @Cantidad
     WHERE ID = @ProductoID;
   END
-  ELSE IF EXISTS(SELECT 1 FROM Productos_Lacteos    WHERE ID = @ProductoID)
+  ELSE IF @Tipo = 'Lacteo'
   BEGIN
     UPDATE Productos_Lacteos
       SET Stock = Stock - @Cantidad
@@ -267,7 +297,7 @@ BEGIN
   END
   ELSE
   BEGIN
-    RAISERROR('ProductoID %d no existe en ninguna tabla de productos.',16,1,@ProductoID);
+    RAISERROR('Tipo de producto no válido.',16,1);
     ROLLBACK;
     RETURN;
   END
@@ -276,6 +306,10 @@ BEGIN
 END
 GO
 
+EXEC DescontarStock 
+    @ProductoID = 5,
+    @Cantidad = 3,
+    @Tipo = 'Alimento';
 
 
 --  REPONER EL STOCK CUANDO SE ELIMINA DEL CARRITO
@@ -309,4 +343,18 @@ BEGIN
 END
 GO
 
+
+EXEC ReponerStock 
+    @ProductoID = 3,
+    @Cantidad = 10;
+
+-- VACIAR CARRITO
+
+CREATE PROCEDURE VaciarCarrito
+AS
+BEGIN
+    DELETE FROM Carrito;
+END;
+
+EXEC VaciarCarrito;
 -- FIN =D
