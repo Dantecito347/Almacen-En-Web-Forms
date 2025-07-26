@@ -12,7 +12,7 @@ namespace Parcial_Nº2___Almacen.Controlador
         private BaseDeDatos database = new BaseDeDatos();
 
 
-        public void AgregarAlCarrito(int productoId, string nombre, decimal precio, int cantidad, string tipo)
+        public void AgregarAlCarrito(int productoId, string nombre, decimal precio, int cantidad)
         {
             try
             {
@@ -22,13 +22,12 @@ namespace Parcial_Nº2___Almacen.Controlador
             new SqlParameter("@ProductoID", productoId),
             new SqlParameter("@NombreProducto", nombre),
             new SqlParameter("@Precio", precio),
-            new SqlParameter("@Tipo", tipo),
             new SqlParameter("@Cantidad", cantidad)
         };
                 database.ExecuteNonQuery(spAgregar, paramsAgregar, CommandType.StoredProcedure);
 
                 // 2. Descontar el stock usando el nuevo método
-                DescontarStock(productoId, cantidad, tipo);
+                DescontarStock(productoId, cantidad);
             }
             catch (Exception ex)
             {
@@ -39,15 +38,14 @@ namespace Parcial_Nº2___Almacen.Controlador
 
 
 
-        public void DescontarStock(int productoId, int cantidad, string tipo)
+        public void DescontarStock(int productoId, int cantidad)
         {
             try
             {
                 string spDescontar = "dbo.DescontarStock";
                 SqlParameter[] paramsDescontar = {
             new SqlParameter("@ProductoID", productoId),
-            new SqlParameter("@Cantidad", cantidad),
-            new SqlParameter("@Tipo", tipo)
+            new SqlParameter("@Cantidad", cantidad)
         };
                 database.ExecuteNonQuery(spDescontar, paramsDescontar, CommandType.StoredProcedure);
             }
@@ -102,21 +100,20 @@ namespace Parcial_Nº2___Almacen.Controlador
 
             DataTable itemsCarrito = ds.Tables[0];
 
+
             foreach (DataRow row in itemsCarrito.Rows)
             {
+
                 int productoId = Convert.ToInt32(row["ProductoID"]);
                 int cantidad = Convert.ToInt32(row["Cantidad"]);
-                string tipo = row["Tipo"].ToString(); // <-- Ahora sí funciona
 
                 string spName = "DescontarStock";
                 SqlParameter[] parameters = {
-        new SqlParameter("@ProductoID", productoId),
-        new SqlParameter("@Cantidad", cantidad),
-        new SqlParameter("@Tipo", tipo)
-    };
+                    new SqlParameter("@ProductoID", productoId),
+                    new SqlParameter("@Cantidad", cantidad)
+                };
                 database.ExecuteNonQuery(spName, parameters, CommandType.StoredProcedure);
             }
-
 
             VaciarCarrito();
         }

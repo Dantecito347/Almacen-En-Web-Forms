@@ -1,10 +1,13 @@
-CREATE DATABASE Almacen;
+ï»¿CREATE DATABASE Almacen;
 GO
 
 USE Almacen;
 GO
 
--- CREACIÓN DE TABLAS PARA LAS DISTINTAS FUNCIONALIDADES Y SUS DATOS
+
+DROP DATABASE Almacen;
+GO
+-- CREACIï¿½N DE TABLAS PARA LAS DISTINTAS FUNCIONALIDADES Y SUS DATOS
 -- TABLA DE PRODUCTOS => ALIMENTOS
 
 CREATE TABLE Productos_Alimentos (
@@ -18,31 +21,31 @@ GO
 SET IDENTITY_INSERT Productos_Alimentos ON;
 
 INSERT INTO Productos_Alimentos (ID, Nombre, Precio, Stock) VALUES
-(1, 'Fideos Sol Pampeano Tallarínes', 800.00, 50),
+(1, 'Fideos Sol Pampeano Tallarï¿½nes', 800.00, 50),
 (2, 'Fideos Sol Pampeano Spaggueti', 800.00, 50),
-(3, 'Fideos Sol Pampeano Tirabuzón', 800.00, 50),
+(3, 'Fideos Sol Pampeano Tirabuzï¿½n', 800.00, 50),
 (4, 'Fideos Sol Pampeano Dedal', 800.00, 50),
 (5, 'Fideos Sol Pampeano Codo', 800.00, 50),
 (6, 'Fideos Sol Pampeano Mostachol', 800.00, 50),
-(7, 'Arroz Máximo 1kg', 1900.00, 50),
+(7, 'Arroz Mï¿½ximo 1kg', 1900.00, 50),
 (8, 'Arrpz Molinos ALA', 2500.00, 20),
 (9, 'Aceite Natura 900ml', 2300.00, 25),
 (10, 'Aceite Cocinero 900ml', 2700.00, 15),
 (11, 'Sal Fina Celusal 500g', 1290.00, 15),
-(12, 'Puré de Tomate Mora 520g', 730.00, 25),
-(13, 'Puré de Tomate INCAA 520g', 1000.00, 25),
+(12, 'Purï¿½ de Tomate Mora 520g', 730.00, 25),
+(13, 'Purï¿½ de Tomate INCAA 520g', 1000.00, 25),
 (14, 'Mayonesa Hellmans 500ml', 2850.00, 30),
 (15, 'Mayonesa Hellmans 250ml', 1450.00, 50),
 (16, 'Mayonesa CadaDia 250ml', 950.00, 25),
-(17, 'Yerba Unión 500g', 2200.00, 15),
+(17, 'Yerba Uniï¿½n 500g', 2200.00, 15),
 (18,'Yerba Chamigo 500g', 1900.00, 15),
 (19, 'Yerba Amanda 500g', 2350.00, 15),
 (20, 'Yerba Rosamonte 500g', 2100.00, 15),
-(21, 'Yerba Mañanita 500g', 2200.00, 15),
-(22, 'Yerba Taraguí 500g', 2200.00, 15),
+(21, 'Yerba Maï¿½anita 500g', 2200.00, 15),
+(22, 'Yerba Taraguï¿½ 500g', 2200.00, 15),
 (23, 'Harina Leudante Morixe 1kg', 1200.00, 20),
 (24, 'Harina Leudante Pureza 1kg', 1650.00, 15),
-(25, 'Azúcar Común Doña Inés 1kg', 1100.00, 35),
+(25, 'Azï¿½car Comï¿½n Doï¿½a Inï¿½s 1kg', 1100.00, 35),
 (26, 'Polenta S&P 500g', 750.00, 40),
 (27, 'Chocolatada en polvo Nesquik 360g', 3400.00, 25),
 (28, 'Chocolatada en polvo Chocolino 180g', 1800.00, 35);
@@ -114,11 +117,11 @@ TipoDeVehiculo VARCHAR(100) NOT NULL,
 SET IDENTITY_INSERT Repartidores ON; 
 
 INSERT INTO Repartidores (PersonaID, Nombre, Apellido, Email, Celular, Localidad, TipoDeVehiculo) VALUES
-(1, 'Carlos', 'Gómez', 'carlos.gomez@example.com', '1234567890', 'Buenos Aires', 'Auto'),
-(2, 'Lucia', 'Martínez', 'lucia.martinez@example.com', '9876543210', 'Rosario', 'Bicicleta'),
-(3, 'Juan', 'Peréz', 'juan,perez@example.com', '1357924680', 'Córdoba', 'Auto'),
-(4, 'Sofía', 'López', 'sofia.lopez@example.com', '1482593760', 'Mendoza', 'Moto'),
-(5, 'Diego', 'Ramírez', 'diego.ramirez@example.com', '2468013579', 'La Plata', 'Camioneta');
+(1, 'Carlos', 'Gï¿½mez', 'carlos.gomez@example.com', '1234567890', 'Buenos Aires', 'Auto'),
+(2, 'Lucia', 'Martï¿½nez', 'lucia.martinez@example.com', '9876543210', 'Rosario', 'Bicicleta'),
+(3, 'Juan', 'Perï¿½z', 'juan,perez@example.com', '1357924680', 'Cï¿½rdoba', 'Auto'),
+(4, 'Sofï¿½a', 'Lï¿½pez', 'sofia.lopez@example.com', '1482593760', 'Mendoza', 'Moto'),
+(5, 'Diego', 'Ramï¿½rez', 'diego.ramirez@example.com', '2468013579', 'La Plata', 'Camioneta');
 
 SET IDENTITY_INSERT Repartidores OFF;  
 
@@ -134,7 +137,7 @@ Cantidad INT NOT NULL
 );
 
 
--- CREACIÓN DE PROCEDIMIENTOS ALMACENADOS PARA LAS DISTINTAS FUNCIONALIDADES DE LA APP
+-- CREACIï¿½N DE PROCEDIMIENTOS ALMACENADOS PARA LAS DISTINTAS FUNCIONALIDADES DE LA APP
 
 -- OBTENER LOS PRODUCTOS DEL CARRITO
 
@@ -150,7 +153,6 @@ BEGIN
 END
 GO
 
-EXEC ObtenerCarritoConTotal;
 
 -- AGREGAR UN PRODUCTO AL CARRITO
 
@@ -161,26 +163,13 @@ CREATE PROCEDURE AgregarProductoAlCarrito
     @Cantidad INT
 AS
 BEGIN
-	IF BEGIN 
-	IF EXISTS (SELECT 1 FROM Carrito WHERE ProductoID = @ProductoID)
-	BEGIN 
-		PRINT 'Este producto ya está agregado';
-		END
-		ELSE
-		BEGIN
     INSERT INTO Carrito (ProductoID, NombreProducto, Precio, Cantidad)
     VALUES (@ProductoID, @NombreProducto, @Precio, @Cantidad);
 END
-END;
 GO
 
-EXEC AgregarProductoAlCarrito 
-    @ProductoID = NULL,
-	@NombreProducto = NULL,
-	@Precio = NULL,
-    @Cantidad = NULL;
 
--- OJO, REVISAR ESTO DE ELIMINAR, DEBERÍA SER CREATE Y NO ALTER
+-- OJO, REVISAR ESTO DE ELIMINAR, DEBERï¿½A SER CREATE Y NO ALTER
 
 
 CREATE PROCEDURE EliminarProductoDelCarrito
@@ -190,9 +179,6 @@ BEGIN
     DELETE FROM Carrito
     WHERE ID = @CarritoID;
 END
-
-EXEC EliminarProductoDelCarrito 
-    @CarritoID = 3;
 
 
 -- ACTUALIZAR LA CANTIDAD DEL PRODUCTO
@@ -207,10 +193,6 @@ BEGIN
     WHERE ID = @CarritoID;
 END
 
-EXEC ActualizarCantidadProducto 
-    @CarritoID = 3, 
-    @NuevaCantidad = 7;
-
 
 -- AGREGAR O ELIMINAR UN REPARTIDOR
 
@@ -222,7 +204,7 @@ CREATE PROCEDURE GestionarRepartidor
     @Celular VARCHAR(20) = NULL,
     @Localidad VARCHAR(100) = NULL,
     @TipoDeVehiculo VARCHAR(100) = NULL,
-	@ProductoID INT = NULL,
+	@ProductoID INT = NULL
 AS
 BEGIN
     IF @Accion = 'INSERTAR'
@@ -247,49 +229,40 @@ BEGIN
         END
         ELSE
         BEGIN
-            PRINT 'No se encontró un repartidor con ese ID o Email.';
+            PRINT 'No se encontrï¿½ un repartidor con ese ID o Email.';
         END
     END
     ELSE
     BEGIN
-        PRINT 'Acción no reconocida.';
+        PRINT 'Acciï¿½n no reconocida.';
     END
 END;
 
-EXEC GestionarRepartidor 
-    @Accion = 'INSERTAR',
-    @Nombre = 'Lola',
-    @Apellido = 'Campos',
-    @Email = 'lola.campos@example.com',
-    @Celular = '1122334455',
-    @Localidad = 'Villa Ballester',
-    @TipoDeVehiculo = 'Moto';
 
 -- DESCONTAR EL STOCK AL MOMENTO DE COMPRAR
 
 
 CREATE PROCEDURE DescontarStock
   @ProductoID INT,
-  @Cantidad   INT,
-  @Tipo       NVARCHAR(20)
+  @Cantidad   INT
 AS
 BEGIN
   SET NOCOUNT ON;
   BEGIN TRAN;
 
-  IF @Tipo = 'Alimento'
+  IF EXISTS(SELECT 1 FROM Productos_Alimentos   WHERE ID = @ProductoID)
   BEGIN
     UPDATE Productos_Alimentos
       SET Stock = Stock - @Cantidad
     WHERE ID = @ProductoID;
   END
-  ELSE IF @Tipo = 'Bebida'
+  ELSE IF EXISTS(SELECT 1 FROM Productos_Bebidas    WHERE ID = @ProductoID)
   BEGIN
     UPDATE Productos_Bebidas
       SET Stock = Stock - @Cantidad
     WHERE ID = @ProductoID;
   END
-  ELSE IF @Tipo = 'Lacteo'
+  ELSE IF EXISTS(SELECT 1 FROM Productos_Lacteos    WHERE ID = @ProductoID)
   BEGIN
     UPDATE Productos_Lacteos
       SET Stock = Stock - @Cantidad
@@ -297,7 +270,7 @@ BEGIN
   END
   ELSE
   BEGIN
-    RAISERROR('Tipo de producto no válido.',16,1);
+    RAISERROR('ProductoID %d no existe en ninguna tabla de productos.',16,1,@ProductoID);
     ROLLBACK;
     RETURN;
   END
@@ -306,10 +279,6 @@ BEGIN
 END
 GO
 
-EXEC DescontarStock 
-    @ProductoID = 5,
-    @Cantidad = 3,
-    @Tipo = 'Alimento';
 
 
 --  REPONER EL STOCK CUANDO SE ELIMINA DEL CARRITO
@@ -343,18 +312,4 @@ BEGIN
 END
 GO
 
-
-EXEC ReponerStock 
-    @ProductoID = 3,
-    @Cantidad = 10;
-
--- VACIAR CARRITO
-
-CREATE PROCEDURE VaciarCarrito
-AS
-BEGIN
-    DELETE FROM Carrito;
-END;
-
-EXEC VaciarCarrito;
 -- FIN =D
