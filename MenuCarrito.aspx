@@ -44,8 +44,8 @@
     </div>
         <div class="ui buttons">
 <asp:Button ID="btnDescargarRecibo" runat="server" 
-    Text="Descargar Recibo" 
-    CssClass="ui primary button"
+    Text="Finalizar Compra" 
+    CssClass="ui primary positive button"
     OnClick="btnDescargarRecibo_Click" />
 </div>
 
