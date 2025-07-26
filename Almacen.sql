@@ -154,7 +154,7 @@ BEGIN
     FROM Carrito;
 END
 GO
-
+EXEC ObtenerCarritoConTotal;
 
 -- AGREGAR UN PRODUCTO AL CARRITO
 
@@ -165,12 +165,33 @@ CREATE PROCEDURE AgregarProductoAlCarrito
     @Cantidad INT
 AS
 BEGIN
-    INSERT INTO Carrito (ProductoID, NombreProducto, Precio, Cantidad)
-    VALUES (@ProductoID, @NombreProducto, @Precio, @Cantidad);
-END
+    DECLARE @CarritoIDExistente INT;
+    DECLARE @CantidadActual INT;
+    IF EXISTS (SELECT 1 FROM Carrito WHERE ProductoID = @ProductoID)
+    BEGIN
+        SELECT @CarritoIDExistente = ID, @CantidadActual = Cantidad
+        FROM Carrito
+        WHERE ProductoID = @ProductoID;
+        DECLARE @NuevaCantidadTotal INT = @CantidadActual + @Cantidad;
+        EXEC ActualizarCantidadProducto 
+            @CarritoID = @CarritoIDExistente, 
+            @NuevaCantidad = @NuevaCantidadTotal;
+        PRINT 'Cantidad del producto actualizada en el carrito.';
+    END
+    ELSE
+    BEGIN
+        INSERT INTO Carrito (ProductoID, NombreProducto, Precio, Cantidad)
+        VALUES (@ProductoID, @NombreProducto, @Precio, @Cantidad);
+    END
+END;
 GO
 
 
+EXEC AgregarProductoAlCarrito 
+    @ProductoID = NULL,
+	@NombreProducto = NULL,
+	@Precio = NULL,
+    @Cantidad = NULL;
 -- OJO, REVISAR ESTO DE ELIMINAR, DEBER�A SER CREATE Y NO ALTER
 
 
@@ -183,7 +204,8 @@ BEGIN
 END
 GO
 
-
+EXEC EliminarProductoDelCarrito 
+    @CarritoID = 3;
 -- ACTUALIZAR LA CANTIDAD DEL PRODUCTO
 
 CREATE PROCEDURE ActualizarCantidadProducto
@@ -197,6 +219,9 @@ BEGIN
 END
 GO
 
+EXEC ActualizarCantidadProducto 
+    @CarritoID = 3, 
+    @NuevaCantidad = 7;
 
 -- AGREGAR O ELIMINAR UN REPARTIDOR
 
@@ -243,6 +268,14 @@ BEGIN
     END
 END;
 
+EXEC GestionarRepartidor 
+    @Accion = 'INSERTAR',
+    @Nombre = 'Lola',
+    @Apellido = 'Campos',
+    @Email = 'lola.campos@example.com',
+    @Celular = '1122334455',
+    @Localidad = 'Villa Ballester',
+    @TipoDeVehiculo = 'Moto';
 
 -- DESCONTAR EL STOCK AL MOMENTO DE COMPRAR
 
@@ -284,7 +317,10 @@ BEGIN
 END
 GO
 
-
+EXEC DescontarStock 
+    @ProductoID = 5,
+    @Cantidad = 3,
+    @Tipo = 'Alimento';
 
 --  REPONER EL STOCK CUANDO SE ELIMINA DEL CARRITO
 
@@ -316,6 +352,10 @@ BEGIN
     END
 END
 GO
+
+EXEC ReponerStock 
+    @ProductoID = 3,
+    @Cantidad = 10;
 
 CREATE PROCEDURE VaciarCarrito
 AS
