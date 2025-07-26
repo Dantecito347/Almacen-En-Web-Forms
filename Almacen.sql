@@ -21,36 +21,38 @@ GO
 SET IDENTITY_INSERT Productos_Alimentos ON;
 
 INSERT INTO Productos_Alimentos (ID, Nombre, Precio, Stock) VALUES
-(1, 'Fideos Sol Pampeano Tallar�nes', 800.00, 50),
+(1, 'Fideos Sol Pampeano Tallarines', 800.00, 50),
 (2, 'Fideos Sol Pampeano Spaggueti', 800.00, 50),
-(3, 'Fideos Sol Pampeano Tirabuz�n', 800.00, 50),
+(3, 'Fideos Sol Pampeano Tirabuzon', 800.00, 50),
 (4, 'Fideos Sol Pampeano Dedal', 800.00, 50),
 (5, 'Fideos Sol Pampeano Codo', 800.00, 50),
 (6, 'Fideos Sol Pampeano Mostachol', 800.00, 50),
-(7, 'Arroz M�ximo 1kg', 1900.00, 50),
-(8, 'Arrpz Molinos ALA', 2500.00, 20),
+(7, 'Arroz Maximo 1kg', 1900.00, 50),
+(8, 'Arroz Molinos ALA', 2500.00, 20),
 (9, 'Aceite Natura 900ml', 2300.00, 25),
 (10, 'Aceite Cocinero 900ml', 2700.00, 15),
 (11, 'Sal Fina Celusal 500g', 1290.00, 15),
-(12, 'Pur� de Tomate Mora 520g', 730.00, 25),
-(13, 'Pur� de Tomate INCAA 520g', 1000.00, 25),
+(12, 'Pure de Tomate Mora 520g', 730.00, 25),
+(13, 'Pure de Tomate INCAA 520g', 1000.00, 25),
 (14, 'Mayonesa Hellmans 500ml', 2850.00, 30),
 (15, 'Mayonesa Hellmans 250ml', 1450.00, 50),
 (16, 'Mayonesa CadaDia 250ml', 950.00, 25),
-(17, 'Yerba Uni�n 500g', 2200.00, 15),
+(17, 'Yerba Union 500g', 2200.00, 15),
 (18,'Yerba Chamigo 500g', 1900.00, 15),
 (19, 'Yerba Amanda 500g', 2350.00, 15),
 (20, 'Yerba Rosamonte 500g', 2100.00, 15),
-(21, 'Yerba Ma�anita 500g', 2200.00, 15),
-(22, 'Yerba Taragu� 500g', 2200.00, 15),
+(21, 'Yerba Mananita 500g', 2200.00, 15),
+(22, 'Yerba Taragui 500g', 2200.00, 15),
 (23, 'Harina Leudante Morixe 1kg', 1200.00, 20),
 (24, 'Harina Leudante Pureza 1kg', 1650.00, 15),
-(25, 'Az�car Com�n Do�a In�s 1kg', 1100.00, 35),
+(25, 'Azucar Comun Dona Ines 1kg', 1100.00, 35),
 (26, 'Polenta S&P 500g', 750.00, 40),
 (27, 'Chocolatada en polvo Nesquik 360g', 3400.00, 25),
 (28, 'Chocolatada en polvo Chocolino 180g', 1800.00, 35);
 
 SET IDENTITY_INSERT Productos_Alimentos OFF;
+
+
 
 -- TABLA DE PRODUCTOS => BEBIDAS
 
@@ -64,17 +66,16 @@ Stock INT NOT NULL
 SET IDENTITY_INSERT Productos_Bebidas ON;
 
 INSERT INTO Productos_Bebidas (ID, Nombre, Precio, Stock) VALUES
-(1, 'Gaseosa Secco 3l', 2000.00, 50),
-(2, 'Gaseosa Manaos 3l', 3000.00, 50),
-(3, 'Gaseosa Baggio 2.25l', 1400.00, 50),
-(4, 'Sprite 1.75l', 3400.00, 50),
-(5, 'Jugo de Uva Brio Villa del Sur', 950.00, 30),
-(6, 'Jugo de Naranja Brio Villa del Sur', 920.00, 60),
-(7, 'Jugo de Pomelo Brio Villa del Sur', 920.00, 60),
-(8, 'Jugo Multifruta Brio Villa del Sur', 920.00, 60);
+(29, 'Gaseosa Secco 3l', 2000.00, 50),
+(30, 'Gaseosa Manaos 3l', 3000.00, 50),
+(31, 'Gaseosa Baggio 2.25l', 1400.00, 50),
+(32, 'Sprite 1.75l', 3400.00, 50),
+(33, 'Jugo de Uva Brio Villa del Sur', 950.00, 30),
+(34, 'Jugo de Naranja Brio Villa del Sur', 920.00, 60),
+(35, 'Jugo de Pomelo Brio Villa del Sur', 920.00, 60),
+(36, 'Jugo Multifruta Brio Villa del Sur', 920.00, 60);
 
 SET IDENTITY_INSERT Productos_Bebidas OFF;
-
 -- TABLA DE PRODUCTOS => LACTEOS
 
 CREATE TABLE Productos_Lacteos (
@@ -87,17 +88,17 @@ Stock INT NOT NULL
 SET IDENTITY_INSERT Productos_Lacteos ON;
 
 INSERT INTO Productos_Lacteos (ID, Nombre, Precio, Stock) VALUES
-(1, 'Leche Entera Ilolay 1l', 2200.00, 50),
-(2, 'Leche Entera Milkout 1l', 1950.00, 50),
-(3, 'Leche Entera Apostoles 1l', 1700.00, 50),
-(4, 'Leche Entera 7 Vidas 1l', 1750.00, 50),
-(5, 'Leche Entera La Familia 1l', 1400.00, 50),
-(6, 'Queso Cremoso 200g', 1900.00, 20),
-(7, 'Manteca La Familia 200ml', 2100.00, 25),
-(8, 'Crema de Leche La Familia', 2100.00, 15),
-(9, 'Dulce de Leche Tonadita 400g', 2100.00, 15),
-(10, 'Dulce de Leche Milkout 400g', 2600.00, 15),
-(11, 'Dulce de Leche La Paulina 400g', 3200.00, 15);
+(37, 'Leche Entera Ilolay 1l', 2200.00, 50),
+(38, 'Leche Entera Milkout 1l', 1950.00, 50),
+(39, 'Leche Entera Apostoles 1l', 1700.00, 50),
+(40, 'Leche Entera 7 Vidas 1l', 1750.00, 50),
+(41, 'Leche Entera La Familia 1l', 1400.00, 50),
+(42, 'Queso Cremoso 200g', 1900.00, 20),
+(43, 'Manteca La Familia 200ml', 2100.00, 25),
+(44, 'Crema de Leche La Familia', 2100.00, 15),
+(45, 'Dulce de Leche Tonadita 400g', 2100.00, 15),
+(46, 'Dulce de Leche Milkout 400g', 2600.00, 15),
+(47, 'Dulce de Leche La Paulina 400g', 3200.00, 15);
 
 SET IDENTITY_INSERT Productos_Lacteos OFF;
 
@@ -117,11 +118,11 @@ TipoDeVehiculo VARCHAR(100) NOT NULL,
 SET IDENTITY_INSERT Repartidores ON; 
 
 INSERT INTO Repartidores (PersonaID, Nombre, Apellido, Email, Celular, Localidad, TipoDeVehiculo) VALUES
-(1, 'Carlos', 'G�mez', 'carlos.gomez@example.com', '1234567890', 'Buenos Aires', 'Auto'),
-(2, 'Lucia', 'Mart�nez', 'lucia.martinez@example.com', '9876543210', 'Rosario', 'Bicicleta'),
-(3, 'Juan', 'Per�z', 'juan,perez@example.com', '1357924680', 'C�rdoba', 'Auto'),
-(4, 'Sof�a', 'L�pez', 'sofia.lopez@example.com', '1482593760', 'Mendoza', 'Moto'),
-(5, 'Diego', 'Ram�rez', 'diego.ramirez@example.com', '2468013579', 'La Plata', 'Camioneta');
+(1, 'Carlos', 'Gomez', 'carlos.gomez@example.com', '1234567890', 'Buenos Aires', 'Auto'),
+(2, 'Lucia', 'Martinez', 'lucia.martinez@example.com', '9876543210', 'Rosario', 'Bicicleta'),
+(3, 'Juan', 'Perez', 'juan,perez@example.com', '1357924680', 'Cordoba', 'Auto'),
+(4, 'Sofia', 'Lopez', 'sofia.lopez@example.com', '1482593760', 'Mendoza', 'Moto'),
+(5, 'Diego', 'Ramirez', 'diego.ramirez@example.com', '2468013579', 'La Plata', 'Camioneta');
 
 SET IDENTITY_INSERT Repartidores OFF;  
 
@@ -207,7 +208,8 @@ CREATE PROCEDURE GestionarRepartidor
     @Celular VARCHAR(20) = NULL,
     @Localidad VARCHAR(100) = NULL,
     @TipoDeVehiculo VARCHAR(100) = NULL,
-	@ProductoID INT = NULL
+	@ProductoID INT = NULL,
+	@PersonaID INT = NULL  
 AS
 BEGIN
     IF @Accion = 'INSERTAR'
@@ -239,8 +241,7 @@ BEGIN
     BEGIN
         PRINT 'Acci�n no reconocida.';
     END
-END
-GO
+END;
 
 
 -- DESCONTAR EL STOCK AL MOMENTO DE COMPRAR
@@ -315,5 +316,13 @@ BEGIN
     END
 END
 GO
+
+CREATE PROCEDURE VaciarCarrito
+AS
+BEGIN
+    DELETE FROM Carrito;
+END;
+
+EXEC VaciarCarrito;
 
 -- FIN =D

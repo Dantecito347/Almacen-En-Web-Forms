@@ -75,33 +75,65 @@ namespace Parcial_Nº2___Almacen
 
         protected void btnDescargarRecibo_Click(object sender, EventArgs e)
         {
-
+            // 1. Obtener los datos del carrito ANTES de vaciarlo.
             DataSet ds = carritoController.ObtenerCarritoConTotal();
             DataTable dtItems = ds.Tables[0];
-            decimal total = Convert.ToDecimal(ds.Tables[1].Rows[0]["Total"] ?? 0);
+            decimal total = 0;
+            if (ds.Tables.Count > 1 && ds.Tables[1].Rows.Count > 0 && ds.Tables[1].Rows[0]["Total"] != DBNull.Value)
+            {
+                total = Convert.ToDecimal(ds.Tables[1].Rows[0]["Total"]);
+            }
 
+            // Si no hay items, no hacer nada.
+            if (dtItems.Rows.Count == 0)
+            {
+                // Opcional: Mostrar un mensaje al usuario.
+                // ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('El carrito está vacío.');", true);
+                return;
+            }
+
+            // 2. Generar el contenido del recibo.
             List<string> lineas = new List<string>();
-            lineas.Add("RECIBO DE COMPRA");
-            lineas.Add("----------------------"); 
-            lineas.Add("Almacen 'Lo de Juan'");
-            lineas.Add($"Fecha: {DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}");
-            lineas.Add("----------------------");
+            lineas.Add("      RECIBO DE COMPRA");
+            lineas.Add("--------------------------------");
+            lineas.Add("      Almacen 'Lo de Juan'");
+            lineas.Add($"Fecha: {DateTime.Now:dd/MM/yyyy HH:mm:ss}");
+            if (Session["RepartidorSeleccionado"] != null)
+            {
+                lineas.Add($"Repartidor: {Session["RepartidorSeleccionado"]}");
+            }
+            lineas.Add("--------------------------------");
+            lineas.Add("");
             foreach (DataRow row in dtItems.Rows)
             {
-                lineas.Add($"{row["NombreProducto"]} x{row["Cantidad"]} - {Convert.ToDecimal(row["Precio"]):C} = {Convert.ToDecimal(row["Subtotal"]):C}");
+                string nombre = row["NombreProducto"].ToString();
+                int cantidad = Convert.ToInt32(row["Cantidad"]);
+                decimal precio = Convert.ToDecimal(row["Precio"]);
+                decimal subtotal = Convert.ToDecimal(row["Subtotal"]);
+                lineas.Add($"{nombre} x{cantidad} - {precio:C} = {subtotal:C}");
             }
-            lineas.Add("----------------------");
+            lineas.Add("");
+            lineas.Add("--------------------------------");
             lineas.Add($"TOTAL: {total:C}");
 
             string recibo = string.Join(Environment.NewLine, lineas);
 
+            // 3. Vaciar el carrito en la base de datos.
+            carritoController.VaciarCarrito();
+
+            // 4. "Eliminar" el repartidor seleccionado de la sesión actual.
+            Session["RepartidorSeleccionado"] = null;
+
+            // 5. Refrescar la vista del carrito en la página.
+            CargarCarrito();
+
+            // 6. Enviar el recibo como un archivo de texto.
             Response.Clear();
             Response.ContentType = "text/plain";
             Response.AddHeader("Content-Disposition", "attachment; filename=Recibo.txt");
             Response.Write(recibo);
             Response.End();
         }
-
 
         void ActualizarCantidad(int carritoId, int nuevaCantidad)
         {

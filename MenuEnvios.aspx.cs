@@ -94,7 +94,7 @@ namespace Parcial_Nº2___Almacen
             else if (e.CommandName == "Seleccionar")
             {
 
-                Response.Write("<script>alert('Evento ejecutado');</script>");
+                Response.Write("<script>alert('¡ Repartidor seleccionado !');</script>");
                 GridViewRow row = ((Button)e.CommandSource).NamingContainer as GridViewRow;
                 string nombre = row.Cells[1].Text.Trim();
                 string apellido = row.Cells[2].Text.Trim();
