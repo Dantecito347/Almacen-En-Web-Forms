@@ -84,11 +84,10 @@ namespace Parcial_Nº2___Almacen
                 total = Convert.ToDecimal(ds.Tables[1].Rows[0]["Total"]);
             }
 
-            // Si no hay items, no hacer nada.
             if (dtItems.Rows.Count == 0)
             {
-                // Opcional: Mostrar un mensaje al usuario.
-                // ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('El carrito está vacío.');", true);
+                lblMensaje.Text = "El carrito está vacío.";
+                btnDescargarReciboArchivo.Visible = false;
                 return;
             }
 
@@ -124,15 +123,15 @@ namespace Parcial_Nº2___Almacen
             // 4. "Eliminar" el repartidor seleccionado de la sesión actual.
             Session["RepartidorSeleccionado"] = null;
 
-            // 5. Refrescar la vista del carrito en la página.
+            // 5. Guardar el recibo en sesión para descargarlo después.
+            Session["ReciboCompra"] = recibo;
+
+            // 6. Refrescar la vista del carrito en la página.
             CargarCarrito();
 
-            // 6. Enviar el recibo como un archivo de texto.
-            Response.Clear();
-            Response.ContentType = "text/plain";
-            Response.AddHeader("Content-Disposition", "attachment; filename=Recibo.txt");
-            Response.Write(recibo);
-            Response.End();
+            // 7. Mostrar mensaje y habilitar botón de descarga.
+            lblMensaje.Text = "Compra finalizada. Puede descargar su recibo.";
+            btnDescargarReciboArchivo.Visible = true;
         }
 
         void ActualizarCantidad(int carritoId, int nuevaCantidad)
@@ -148,9 +147,20 @@ namespace Parcial_Nº2___Almacen
             }
         }
 
+        protected void btnDescargarReciboArchivo_Click(object sender, EventArgs e)
+        {
+            if (Session["ReciboCompra"] != null)
+            {
+                string recibo = Session["ReciboCompra"].ToString();
+                Session["ReciboCompra"] = null;
+                btnDescargarReciboArchivo.Visible = false;
 
-
-
-
+                Response.Clear();
+                Response.ContentType = "text/plain";
+                Response.AddHeader("Content-Disposition", "attachment; filename=Recibo.txt");
+                Response.Write(recibo);
+                Response.End();
+            }
+        }
     }
 }

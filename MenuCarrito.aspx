@@ -40,6 +40,12 @@
     <h3 class="ui right floated header">Total: 
     <asp:Label ID="lblTotal" runat="server" CssClass="ui teal circular label massive" />
     <asp:Label ID="lblRepartidor" runat="server" CssClass="ui teal large label" />
+    <asp:Label ID="lblMensaje" runat="server" CssClass="ui green label" />
+    <asp:Button ID="btnDescargarReciboArchivo" runat="server"
+    Text="Descargar Recibo"
+    CssClass="ui button"
+    OnClick="btnDescargarReciboArchivo_Click"
+    Visible="false" />
 </h3>
     </div>
         <div class="ui buttons">
