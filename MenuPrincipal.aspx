@@ -6,7 +6,6 @@
 
     <uc:BarraDeNavegacion ID="NavBar1" runat="server" />
         <div class="carousel-container">
-  <!-- Overlay con título -->
   <div class="hero-overlay">
       
 
@@ -16,7 +15,6 @@
 Cada día trabajamos para sumar nuevos productos, con buenos precios y una atención personalizada.</p>
   </div>
 
-  <!-- Carrusel Swiper -->
 <div class="swiper-wrapper">
   <div class="swiper-slide">
     <img src="~/img/presentacion1.jpg" runat="server" />
