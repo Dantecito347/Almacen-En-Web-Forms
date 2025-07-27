@@ -236,18 +236,11 @@ CREATE PROCEDURE GestionarRepartidor
 AS
 BEGIN
     IF @Accion = 'INSERTAR'
-    BEGIN
-        IF EXISTS (SELECT 1 FROM Repartidores WHERE Email = @Email OR Celular = @Celular)
-        BEGIN
-            PRINT 'Ya existe un repartidor con ese Email o Celular.';
-        END
-        ELSE
         BEGIN
             INSERT INTO Repartidores (Nombre, Apellido, Email, Celular, Localidad, TipoDeVehiculo)
             VALUES (@Nombre, @Apellido, @Email, @Celular, @Localidad, @TipoDeVehiculo);
             PRINT 'Repartidor insertado correctamente.';
         END
-    END
     ELSE IF @Accion = 'ELIMINAR'
     BEGIN
         IF EXISTS (SELECT 1 FROM Repartidores WHERE PersonaID = @PersonaID OR Email = @Email)
