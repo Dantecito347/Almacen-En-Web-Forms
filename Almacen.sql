@@ -156,7 +156,38 @@ END
 GO
 EXEC ObtenerCarritoConTotal;
 
--- AGREGAR UN PRODUCTO AL CARRITO
+
+
+
+CREATE PROCEDURE EliminarProductoDelCarrito
+    @CarritoID INT
+AS
+BEGIN
+    DELETE FROM Carrito
+    WHERE ID = @CarritoID;
+END
+GO
+
+EXEC EliminarProductoDelCarrito 
+    @CarritoID = 3;
+-- ACTUALIZAR LA CANTIDAD DEL PRODUCTO
+
+CREATE PROCEDURE ActualizarCantidadProducto
+    @CarritoID INT,
+    @NuevaCantidad INT
+AS
+BEGIN
+    UPDATE Carrito
+    SET Cantidad = @NuevaCantidad
+    WHERE ID = @CarritoID;
+END
+GO
+
+EXEC ActualizarCantidadProducto 
+    @CarritoID = 3, 
+    @NuevaCantidad = 7;
+
+	-- AGREGAR UN PRODUCTO AL CARRITO
 
 CREATE PROCEDURE AgregarProductoAlCarrito
     @ProductoID INT,
@@ -192,36 +223,6 @@ EXEC AgregarProductoAlCarrito
 	@NombreProducto = NULL,
 	@Precio = NULL,
     @Cantidad = NULL;
--- OJO, REVISAR ESTO DE ELIMINAR, DEBER�A SER CREATE Y NO ALTER
-
-
-CREATE PROCEDURE EliminarProductoDelCarrito
-    @CarritoID INT
-AS
-BEGIN
-    DELETE FROM Carrito
-    WHERE ID = @CarritoID;
-END
-GO
-
-EXEC EliminarProductoDelCarrito 
-    @CarritoID = 3;
--- ACTUALIZAR LA CANTIDAD DEL PRODUCTO
-
-CREATE PROCEDURE ActualizarCantidadProducto
-    @CarritoID INT,
-    @NuevaCantidad INT
-AS
-BEGIN
-    UPDATE Carrito
-    SET Cantidad = @NuevaCantidad
-    WHERE ID = @CarritoID;
-END
-GO
-
-EXEC ActualizarCantidadProducto 
-    @CarritoID = 3, 
-    @NuevaCantidad = 7;
 
 -- AGREGAR O ELIMINAR UN REPARTIDOR
 
