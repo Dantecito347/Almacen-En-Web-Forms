@@ -319,8 +319,7 @@ GO
 
 EXEC DescontarStock 
     @ProductoID = 5,
-    @Cantidad = 3,
-    @Tipo = 'Alimento';
+    @Cantidad = 3;
 
 --  REPONER EL STOCK CUANDO SE ELIMINA DEL CARRITO
 

@@ -75,7 +75,6 @@ namespace Parcial_Nº2___Almacen
 
         protected void btnDescargarRecibo_Click(object sender, EventArgs e)
         {
-            // 1. Obtener los datos del carrito ANTES de vaciarlo.
             DataSet ds = carritoController.ObtenerCarritoConTotal();
             DataTable dtItems = ds.Tables[0];
             decimal total = 0;
@@ -91,7 +90,6 @@ namespace Parcial_Nº2___Almacen
                 return;
             }
 
-            // 2. Generar el contenido del recibo.
             List<string> lineas = new List<string>();
             lineas.Add("      RECIBO DE COMPRA");
             lineas.Add("--------------------------------");
@@ -117,19 +115,14 @@ namespace Parcial_Nº2___Almacen
 
             string recibo = string.Join(Environment.NewLine, lineas);
 
-            // 3. Vaciar el carrito en la base de datos.
             carritoController.VaciarCarrito();
 
-            // 4. "Eliminar" el repartidor seleccionado de la sesión actual.
             Session["RepartidorSeleccionado"] = null;
 
-            // 5. Guardar el recibo en sesión para descargarlo después.
             Session["ReciboCompra"] = recibo;
 
-            // 6. Refrescar la vista del carrito en la página.
             CargarCarrito();
 
-            // 7. Mostrar mensaje y habilitar botón de descarga.
             lblMensaje.Text = "Compra finalizada. Puede descargar su recibo.";
             btnDescargarReciboArchivo.Visible = true;
         }

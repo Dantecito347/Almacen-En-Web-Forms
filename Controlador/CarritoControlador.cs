@@ -16,7 +16,6 @@ namespace Parcial_Nº2___Almacen.Controlador
         {
             try
             {
-                // 1. Agregar al carrito
                 string spAgregar = "dbo.AgregarProductoAlCarrito";
                 SqlParameter[] paramsAgregar = {
             new SqlParameter("@ProductoID", productoId),
@@ -26,7 +25,6 @@ namespace Parcial_Nº2___Almacen.Controlador
         };
                 database.ExecuteNonQuery(spAgregar, paramsAgregar, CommandType.StoredProcedure);
 
-                // 2. Descontar el stock usando el nuevo método
                 DescontarStock(productoId, cantidad);
             }
             catch (Exception ex)

@@ -14,8 +14,7 @@ namespace Parcial_Nº2___Almacen.Modelo
             connectionString = ConfigurationManager.ConnectionStrings["AlmacenConnectionString"].ConnectionString;
         }
 
-        // MÉTODO 1: Para consultas SELECT simples que devuelven UNA tabla.
-        // Lo necesitan MenuAlimentosControlador y MenuEnviosControlador.
+
         public DataTable Select(string query, Dictionary<string, object> parameters = null)
         {
             DataTable dataTable = new DataTable();
@@ -36,8 +35,7 @@ namespace Parcial_Nº2___Almacen.Modelo
             }
         }
 
-        // MÉTODO 2: Para Stored Procedures que devuelven MÚLTIPLES tablas (como el carrito).
-        // Lo necesita CarritoControlador.
+
         public DataSet SelectMultiple(string procedureName, Dictionary<string, object> parameters = null)
         {
             DataSet dataSet = new DataSet();
@@ -63,8 +61,7 @@ namespace Parcial_Nº2___Almacen.Modelo
         }
 
 
-        // MÉTODO 3: Para ejecutar INSERT, UPDATE, DELETE, o Stored Procedures que no devuelven datos.
-        // Lo necesita CarritoControlador.
+
         public int ExecuteNonQuery(string query, SqlParameter[] sqlParams, CommandType commandType = CommandType.Text)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
