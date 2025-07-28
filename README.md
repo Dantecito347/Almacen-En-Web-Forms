@@ -10,5 +10,7 @@ de datos normalizada t-sql vinculada al proyecto.
 ## 🚀 Instalación
 
 1. Cloná / descarga el repositorio.
-2. (¡IMPORTANTE!) Antes de ejecutar el proyecto, en Visual Studio selecciona Compilar y luego "Compilar solución".
-3. Ejecuta el proyecto.
+2. (¡IMPORTANTE!) Si el proyecto da Error de privacidad en el navegador, revisar la  cadena de conexión en el
+archivo Web Config y modificarla por la cadena de conexión de su  computadora. En todo caso en la barra de
+direcciones agregue thisisunsafe.
+4. Ejecuta el proyecto.
